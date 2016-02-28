@@ -12,6 +12,10 @@ gem "devise"
 gem "bootstrap-sass",       "3.2.0.0"
 gem "config"
 gem "cancancan", "~> 1.10"
+gem "omniauth"
+gem "omniauth-oauth2"
+gem "omniauth-facebook"
+gem "omniauth-google-oauth2"
 
 group :development, :test do
   gem "byebug"

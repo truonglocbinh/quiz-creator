@@ -1,2 +1,22 @@
 en:
   hello: "Hello world"
+  common:
+    back: "Back"
+    confirm: "Are you sure ?"
+  title:
+    base_title: "Hello quiz"
+    sign_up: "Log in to quiz"
+    log_in: "Log in"
+    for_got: "Forgot your password?"
+  devise:
+    send: "Send me reset password instructions"
+    sign_up: "Sign up"
+    log_in: "Log in"
+    log_out: "Log out"
+    for_got: "Forgot your password?"
+    edit: "Edit"
+    un_happy: "Cancel my account"
+    current_waiting: "Currently waiting confirmation for"
+    leave: "leave blank if you don't want to change it"
+    need_pass: "we need your current password to confirm your changes"
+    button_to: "Cancel my account"

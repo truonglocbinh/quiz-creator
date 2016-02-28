@@ -1,0 +1,34 @@
+# 2015-07-23 RICHARD:
+# THIS IS A SAMPLE FOR social_keys.yml which is git-ignored as it should be, because it will have your keys in it.
+# REMEMBER TO COPY THIS FILE TO social_keys.yml AND CHANGE THE KEYS IN THERE TO MATCH YOURS.
+development:
+  facebook_key: "192675997752342"
+  facebook_secret: "8849b2c7e90666371a31d775fe90354b"
+
+  twitter_key: "YOUR_KEY"
+  twitter_secret: "YOUR_SECRET"
+
+  github_key: "YOUR_KEY"
+  github_secret: "YOUR_SECRET"
+
+  linkedin_key: "YOUR_KEY"
+  linkedin_secret: "YOUR_SECRET"
+
+  google_key: "213133224811-5lu1b1art3eoieuo08a6pn190t1n6218.apps.googleusercontent.com"
+  google_secret: "k4QF-nuBeredaDleIWA1sHNq"
+
+production:
+  facebook_key: "192675997752342"
+  facebook_secret: "8849b2c7e90666371a31d775fe90354b"
+
+  twitter_key: "YOUR_KEY"
+  twitter_secret: "YOUR_SECRET"
+
+  github_key: "YOUR_KEY"
+  github_secret: "YOUR_SECRET"
+
+  linkedin_key: "YOUR_KEY"
+  linkedin_secret: "YOUR_SECRET"
+
+  google_key: "YOUR_KEY"
+  google_secret: "YOUR_SECRET"
