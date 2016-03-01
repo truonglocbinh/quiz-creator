@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-md-8">
+    <h3><%= @exam.title %></h3>
+  </div>
+  <div class="col-md-4">
+    <ul class="nav nav-pills">
+      <li role="presentation" class="active">
+        <%= link_to t("button.edit"), edit_exam_path(@exam) %>
+      </li>
+      <li role="presentation" class="active">
+        <%= link_to t("button.new_question"), new_exam_question_path(@exam) %>
+      </li>
+      <li role="presentation" class="active"><a href="#">Setting</a></li>
+    </ul>
+  </div>
+</div>
+<hr>
+<div class="row questions">
+</div>

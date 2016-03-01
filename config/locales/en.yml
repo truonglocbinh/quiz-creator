@@ -8,6 +8,20 @@ en:
     sign_up: "Log in to quiz"
     log_in: "Log in"
     for_got: "Forgot your password?"
+    home: "Home"
+  message:
+    the_form_contains: "The form contains"
+    errors: "errors"
+    no_correct: "No correct answer"
+    need_content: "Need content for answer"
+  button:
+    create: "Create"
+    edit: "Edit"
+    reset: "Reset"
+    submit: "Submit"
+    new_question: "New Question"
+  flash:
+    update_exam: "Update exam successfully !"
   devise:
     send: "Send me reset password instructions"
     sign_up: "Sign up"
@@ -20,3 +34,23 @@ en:
     leave: "leave blank if you don't want to change it"
     need_pass: "we need your current password to confirm your changes"
     button_to: "Cancel my account"
+  static_pages:
+    create_exams: "Create exam"
+  exams:
+    new: "Create new exam !"
+    edit: "Edit exam !"
+    my_exams: "My exams"
+    index:
+      title: "TITLE"
+      preview: "PREVIEW"
+      share: "SHARE"
+      report: "REPORT"
+      last_modified: "CREATED AT"
+  questions:
+    new:
+      create: "Create new answer"
+      delete: "Remove"
+
+
+
+

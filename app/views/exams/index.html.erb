@@ -1,0 +1,24 @@
+<h1><%= t ".my_exams" %></h1>
+<table class="table table-striped">
+  <tr>
+    <td><%= t "exams.index.title" %></td>
+    <td><%= t "exams.index.preview" %></td>
+    <td><%= t "exams.index.share" %></td>
+    <td><%= t "exams.index.report" %></td>
+    <td><%= t "exams.index.last_modified" %></td>
+  </tr>
+  <% @exams.each do |exam| %>
+    <tr>
+      <td><%= exam.title %></td>
+      <td>
+        <span class="glyphicon glyphicon-eye-open style-span" aria-hidden="true" ></span>
+      </td>
+      <td><span class="glyphicon glyphicon glyphicon-globe style-span" aria-hidden="true"></span></td>
+      <td><span class="glyphicon glyphicon-align-justify style-span" aria-hidden="true"></span></td>
+      <td><%= exam.created_at %></td>
+    </tr>
+  <% end %>
+</table>
+<div class="row">
+  <%= will_paginate @exams %>
+</div>

@@ -5,3 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+# Category.create!(title: "IT")
+# Category.create!(title: "Economy")
+# Category.create!(title: "Education")
+# Category.create!(title: "Foreiner Language")
+# Category.create!(title: "History")
+@user = User.first
+100.times do |n|
+  @exam = @user.exams.build title: "test #{n}"
+  @exam.save
+end
+
+
