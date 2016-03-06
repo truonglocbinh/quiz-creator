@@ -1,4 +1,4 @@
-<div class="fields">
+<div class="fields" style="padding-top: 20px;">
     <div class="row">
       <div class="col-md-1 checkbox-question">
         <%= f.check_box :correct, class: "checkbox" %>
@@ -8,6 +8,12 @@
       </div>
       <div class="col-md-2 remove-answer">
         <%= link_to_remove_fields t("questions.new.delete"), f %><br />
+      </div>
+    </div>
+    <div class="row upload">
+      <div class="form-group">
+        <%= f.label :avatar %>
+        <%= f.file_field :avatar %>
       </div>
     </div>
 </div>

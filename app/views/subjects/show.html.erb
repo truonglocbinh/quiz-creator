@@ -1,0 +1,24 @@
+<% provide :title, t("title.subject") %>
+<div class="row">
+  <%= link_to t("button.new_question"),
+    new_subject_question_path(@subject), class: "btn btn-primary" %>
+</div>
+<div class="row all-question">
+  <table class="table table-condensed table-responsive">
+    <tr>
+      <td><%= t ".question_title" %></td>
+      <td></td>
+    </tr>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= question.title %></td>
+        <td>
+          <%= link_to t("button.edit"), edit_subject_question_path(@subject,question),
+            class: "btn btn-primary" %>
+          <%= link_to t("button.delete"), new_subject_question_path(@subject, question),
+            method: :delete, data: {confirm: "Are you sure ?"}, class: "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

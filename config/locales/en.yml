@@ -9,6 +9,12 @@ en:
     log_in: "Log in"
     for_got: "Forgot your password?"
     home: "Home"
+    create_question: "New question"
+    create_subject: "New subject"
+    edit_subject: "Edit subject"
+    edit_question: "Edit question"
+    my_subject: "My subjects"
+    subject: "Subject"
   message:
     the_form_contains: "The form contains"
     errors: "errors"
@@ -18,10 +24,17 @@ en:
     create: "Create"
     edit: "Edit"
     reset: "Reset"
+    delete: "Delete"
     submit: "Submit"
     new_question: "New Question"
+    continue: "Create and continue"
+    update: "Update"
   flash:
     update_exam: "Update exam successfully !"
+    create_success: "Create successfully!"
+    update_success: "Update successfully!"
+    delete_success: "Delete successfully!"
+    delete_failed: "Delete failed"
   devise:
     send: "Send me reset password instructions"
     sign_up: "Sign up"
@@ -36,6 +49,7 @@ en:
     button_to: "Cancel my account"
   static_pages:
     create_exams: "Create exam"
+    create_subject: "Create Subject"
   exams:
     new: "Create new exam !"
     edit: "Edit exam !"
@@ -50,6 +64,15 @@ en:
     new:
       create: "Create new answer"
       delete: "Remove"
+  subjects:
+    index:
+      my_subject: My Subjects
+      number_of_exam: Number of exams
+      number_of_question: Number of question
+    show:
+      question_title: "Title"
+
+
 
 
 

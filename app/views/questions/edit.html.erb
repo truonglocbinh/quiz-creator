@@ -1,0 +1,35 @@
+<% provide :title, t("title.edit_question") %>
+<div class="col-md-8 col-md-offset-2">
+  <%= form_for [@temp, @question], method: :patch do |f| %>
+    <%= render "shared/error_messages", object: f.object %>
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :feedback %>
+      <%= f.text_area :feedback, class: "form-control" %>
+    </div>
+    <div class="form-group question_type">
+      <%= f.label :question_type %>
+      <%= f.select :question_type, Question.question_types.keys.to_a,{},
+        class: "form-control question-select" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :avatar %>
+      <%= f.file_field :avatar %>
+    </div>
+
+    <div class="choice">
+      <%= f.fields_for :answers do |builder| %>
+        <%= render "answer_fields", f: builder %>
+      <% end %>
+      <p><%= link_to_add_fields t("questions.new.create"), f, :answers %></p>
+    </div>
+    <ul class="list-inline">
+      <li>
+        <%= f.submit t("button.update"), class: "btn btn-primary" %>
+      </li>
+    </ul>
+  <% end %>
+</div>

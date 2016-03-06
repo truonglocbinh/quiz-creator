@@ -1,4 +1,4 @@
-<%= form_for [@exam,@question], method: :post do |f| %>
+<%= form_for [@temp,@question], method: :post do |f| %>
   <%= render "shared/error_messages", object: f.object %>
   <div class="form-group">
     <%= f.label :title %>
@@ -13,6 +13,11 @@
     <%= f.select :question_type, Question.question_types.keys.to_a,{},
       class: "form-control question-select" %>
   </div>
+  <div class="form-group">
+    <%= f.label :avatar %>
+    <%= f.file_field :avatar %>
+  </div>
+
   <div class="choice">
     <%= f.fields_for :answers do |builder| %>
       <%= render "answer_fields", f: builder %>
@@ -24,8 +29,7 @@
       <%= f.submit t("button.create"), class: "btn btn-success" %>
     </li>
     <li>
-      <%= button_tag t("button.reset"), type: :reset,
-        class: "btn btn-default" %>
+      <%= f.submit t("button.continue"), class: "btn btn-success" %>
     </li>
   </ul>
 <% end %>

@@ -1,6 +1,39 @@
-// Place all the styles related to the exams controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-.style-span{
-  cursor:pointer; width: 21px;
+.upload{
+  margin-top: 10px;
+  margin-left: 65px;
+}
+.panel-primary > .panel-heading{
+  color: #fff;
+  background-color: #428bca;
+  border-color: #428bca
+}
+form{
+  display: block;
+  margin-top: 0em;
+  background-color: #A4C8E8;
+  border-radius: 2px;
+  box-shadow: 0 1px 1px #ccc;
+  font-size: 16px;
+  padding: 30px 20px;
+}
+.control-label{
+  text-align: right;
+  padding-top: 7px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+form legend{
+  color: #404040;
+  font-size: 42px;
+  font-family: 'Cookie', cursive;
+  font-weight: normal;
+  line-height: 1;
+  text-shadow: 0 3px 0 rgba(0,0,0,0.1);
+}
+legend{
+  border: 0;
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 20px;
+  padding:0;
+  width: 100%;
 }

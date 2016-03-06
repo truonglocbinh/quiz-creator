@@ -1,10 +1,16 @@
 class User < ActiveRecord::Base
+  has_attached_file :avatar
+  validates_attachment :avatar,
+    content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] },
+    size: { in: 0..2.megabytes }
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   enum role: [:admin, :customer]
 
-  has_many :exams
+  has_many :exams, dependent: :destroy
+  has_many :subjects, dependent: :destroy
 
   def self.from_omniauth auth
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

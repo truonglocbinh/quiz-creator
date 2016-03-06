@@ -3,7 +3,7 @@
 
 <div class="row">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name),
-    html: { method: :put }) do |f| %>
+    html: { method: :put, multipart: true }) do |f| %>
   <%= devise_error_messages! %>
   <div class="col-md-6 col-md-offset-3">
     <div class="field">
@@ -34,6 +34,13 @@
       <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
     </div>
   </div>
+  <div class="col-md-6 col-md-offset-3">
+    <div class="field">
+      <%= f.label :avatar %> <i>(<%= t "devise.leave" %>)</i><br />
+      <%= f.file_field :avatar, class: "form-control" %>
+    </div>
+  </div>
+
   <div class="col-md-6 col-md-offset-3">
     <div class="field">
       <%= f.submit "Update", class: "btn btn-primary" %>

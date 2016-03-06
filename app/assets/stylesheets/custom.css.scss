@@ -18,6 +18,11 @@ $gray-darker: #222;
 
 body{
   padding-top: 60px;
+  background-color: #C6D9F1;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #333;
+  line-height: 1.42857143;
 }
 
 section{
@@ -128,9 +133,6 @@ footer {
   margin-top: 10px;
 }
 
-.custom-nav{
-  background: #d24227;
-}
 .button{
   margin-bottom: 10px;
 }

@@ -1,0 +1,29 @@
+<% provide :title, t("title.my_subject") %>
+<h1><%= t ".my_subject" %></h1>
+<table class="table table-striped">
+  <tr>
+    <td><%= t "exams.index.title" %></td>
+    <td><%= t ".number_of_exam" %></td>
+    <td><%= t ".number_of_question" %></td>
+    <td></td>
+  </tr>
+  <% @subjects.each do |subject| %>
+    <tr>
+      <td><%= link_to subject.title, subject_path(subject) %></td>
+      <td>
+        <%= subject.exams.size %>
+      </td>
+      <td>
+        <%= subject.questions.size %>
+      </td>
+      <td>
+        <%= link_to t("button.edit"), edit_subject_path(subject), class: "btn btn-primary" %>
+        <%= link_to t("button.delete"), subject_path(subject),
+          method: :delete, data: {confirm: "Are you sure ?"},class: "btn btn-danger" %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<div class="row">
+  <%= will_paginate @subjects %>
+</div>

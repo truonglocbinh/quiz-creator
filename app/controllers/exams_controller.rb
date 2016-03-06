@@ -5,6 +5,7 @@ class ExamsController < ApplicationController
   end
 
   def show
+    @questions = @exam.questions
   end
 
   def new
@@ -38,6 +39,6 @@ class ExamsController < ApplicationController
   end
 
   def exam_params
-    params.require(:exam).permit :title, :category_id, :description, :subject_id
+    params.require(:exam).permit :title, :category_id, :description, :subject_id, :avatar
   end
 end

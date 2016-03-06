@@ -14,6 +14,23 @@
     </ul>
   </div>
 </div>
-<hr>
 <div class="row questions">
+  <table class="table">
+    <tr>
+      <td><%= t ".title" %></td>
+      <td></td>
+    </tr>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= question.title %></td>
+        <td>
+          <%= link_to t("button.edit"), edit_exam_question_path(@exam, question),
+            class: "btn btn-primary" %>
+          <%= link_to t("button.delete"), exam_question_path(@exam, question), method: :delete,
+            data: {confirm: "Are you sure ?"}, class: "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
 </div>
