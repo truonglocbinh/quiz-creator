@@ -11,5 +11,8 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require fancybox
+ *= require font-awesome
+ *= require sb-admin-2.css
  *= require_self
  */

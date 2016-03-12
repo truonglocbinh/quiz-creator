@@ -1,9 +1,138 @@
-<div class="row login">
-  <div class="row">
-    <%= link_to t(".create_exams"), new_exam_path, class: "btn btn-danger" %>
-    <%= link_to t(".my_exams"), exams_path, class: "btn btn-danger" %>
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">Home</h1>
   </div>
-  <div class="row">
-    <%= link_to t(".create_subjects"), new_subject_path, class: "btn btn-primary" %>
+</div>
+<div class="row">
+  <div class="col-lg-3 col-md-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-xs-3">
+            <i class="fa fa-comments fa-5x"></i>
+          </div>
+          <div class="col-xs-9 text-right">
+            <div class="huge">
+              26
+            </div>
+            <div>
+              Exams
+            </div>
+          </div>
+        </div>
+      </div><a href="#">
+      <div class="panel-footer">
+        <span class="pull-left">View Details</span> <span class=
+        "pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+        <div class="clearfix"></div>
+      </div></a>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6">
+    <div class="panel panel-green">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-xs-3">
+            <i class="fa fa-tasks fa-5x"></i>
+          </div>
+          <div class="col-xs-9 text-right">
+            <div class="huge">
+              12
+            </div>
+            <div>
+              My Groups
+            </div>
+          </div>
+        </div>
+      </div><a href="#">
+      <div class="panel-footer">
+        <span class="pull-left">View Details</span> <span class=
+        "pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+        <div class="clearfix"></div>
+      </div></a>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6">
+    <div class="panel panel-yellow">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-xs-3">
+            <i class="fa fa-shopping-cart fa-5x"></i>
+          </div>
+          <div class="col-xs-9 text-right">
+            <div class="huge">
+              124
+            </div>
+            <div>
+              New Notification
+            </div>
+          </div>
+        </div>
+      </div><a href="#">
+      <div class="panel-footer">
+        <span class="pull-left">View Details</span> <span class=
+        "pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+        <div class="clearfix"></div>
+      </div></a>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6">
+    <div class="panel panel-red">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-xs-3">
+            <i class="fa fa-support fa-5x"></i>
+          </div>
+          <div class="col-xs-9 text-right">
+            <div class="huge">
+              13
+            </div>
+            <div>
+              Subjects
+            </div>
+          </div>
+        </div>
+      </div><a href="#">
+      <div class="panel-footer">
+        <span class="pull-left">View Details</span> <span class=
+        "pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+        <div class="clearfix"></div>
+      </div></a>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">Exam</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <p>
+      <%= link_to new_exam_path, class: "btn btn-sq-lg btn-danger" do %>
+        <i class="fa fa-plus fa-5x"></i><br/>
+        <%= t ".create_exams" %>
+      <% end %>
+      <%= link_to exams_path, class: "btn btn-sq-lg btn-success" do %>
+        <i class="fa fa-server fa-5x"></i><br>
+        My Exam
+      <% end %>
+      <%= link_to  new_subject_path, class: "btn btn-sq-lg btn-danger" do %>
+        <i class="fa fa-rss-square fa-5x"></i><br>
+        <%= t ".create_subjects" %>
+      <% end %>
+      <%= link_to  subjects_path, class: "btn btn-sq-lg btn-primary" do %>
+        <i class="fa fa-tasks fa-5x"></i><br>
+        <%= t ".my_subject" %>
+      <% end %>
+      <%= link_to new_group_path, class: "btn btn-sq-lg btn-primary" do %>
+        <i class="fa fa-users fa-5x"></i><br>
+        <%= t "create_group" %>
+      <% end %>
+      <%= link_to groups_path, class: "btn btn-sq-lg btn-primary" do %>
+        <i class="fa fa-bars fa-5x"></i><br>
+        <%= t "groups.index.my_group" %>
+      <% end %>
+    </p>
   </div>
 </div>

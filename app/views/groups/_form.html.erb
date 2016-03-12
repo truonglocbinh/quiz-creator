@@ -1,0 +1,24 @@
+<%= form_for @group, html: { multipart: true, class: "form-horizontal" } do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <fieldset>
+    <legend>Basic Group Information</legend>
+    <div class="form-group">
+      <div class="col-md-2 control-label"><%= f.label :name %></div>
+      <div class="col-md-4">
+        <%= f.text_field :name, placeholder: "Name (required)", class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label"><%= f.label :description %></div>
+      <div class="col-md-10">
+        <%= f.text_area :description,placeholder: "Descriptions (required)",
+          rows: 7, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-4 col-md-offset-2">
+        <%= f.submit t("button.create"), class: "btn btn-primary button" %>
+      </div>
+    </div>
+  </fieldset>
+<% end %>

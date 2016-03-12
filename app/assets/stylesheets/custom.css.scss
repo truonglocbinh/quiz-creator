@@ -18,11 +18,9 @@ $gray-darker: #222;
 
 body{
   padding-top: 60px;
-  background-color: #C6D9F1;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  color: #333;
-  line-height: 1.42857143;
+  color: #353535;
+  font-family: 'Open Sans', sans-serif;
+  font-size:14px;
 }
 
 section{
@@ -45,17 +43,6 @@ textarea {
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
-}
-
-h1 {
-  font-size: 3em;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-h2 {
-  text-align: center;
 }
 
 p {

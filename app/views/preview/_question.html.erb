@@ -1,0 +1,31 @@
+<div class="col-md-12">
+  <div class="panel panel-green">
+    <div class="panel-heading"><li><strong><%= f.title %></strong></li></div>
+      <div class="panel-body">
+        <div class="image-answer">
+          <% unless f.avatar_file_name.nil? %>
+            <%= image_tag f.avatar.url, class: "image-exam" %>
+          <% end %>
+        </div>
+     <div class="answer-body">
+        <% if f.single_choice? %>
+          <% f.answers.each do |ans| %>
+            <div class="radio">
+               <input type="radio" name="radio1" value="<%= ans.id%>">
+               <label class="label-answer"><%= ans.content %></label>
+            </div>
+          <% end %>
+        <% elsif f.multiple_choice? %>
+          <% f.answers.each do |ans| %>
+            <div class="checkbox checkbox-primary">
+              <input type="checkbox" name="preview" value="<%= ans.id %>">
+              <label class="label-answer"><%= ans.content %></label>
+            </div>
+          <% end %>
+        <% else %>
+          <textarea class="form-control" rows="5" id="comment"></textarea>
+        <% end %>
+    </div>
+   </div>
+  </div>
+</div>

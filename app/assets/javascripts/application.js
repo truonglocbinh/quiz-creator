@@ -14,12 +14,15 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+//= require fancybox
+//= require ckeditor/init
 //= require_tree .
 
 $(document).on("page:change", function(){
   $(".alert").delay(2000).slideUp(500, function(){
         $(".alert").alert("close");
   });
+
   $(".question-select").change(function(){
     var type = $(this).val();
     if(type == "text"){
@@ -63,6 +66,19 @@ $(document).on("page:change", function(){
       }
     },50);
   });
+
+  $(document).on("input","#filter-email", function(){
+    var role = $("#filter-role").val()
+    var email = $("#filter-email").val()
+    filter_user(email, role)
+  });
+
+  $(document).on("change","#filter-role", function(){
+    var role = $("#filter-role").val()
+    var email = $("#filter-email").val()
+    filter_user(email, role)
+  });
+
 });
 
 function remove_fields(link) {
@@ -74,4 +90,17 @@ function add_fields(link, association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g")
   $(link).parent().before(content.replace(regexp, new_id));
+}
+
+function filter_user(email, role){
+   $.ajax({
+    url:  "/api/users",
+    type: "GET",
+    data: {role: role, email: email},
+    success: function(data){
+      $(".user-data").remove();
+      $(".pagination").remove();
+      $("tbody").append(data);
+    }
+    })
 }

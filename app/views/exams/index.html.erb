@@ -3,7 +3,7 @@
     <%= t ".my_exams" %>
   </div>
   <div class="panel-body">
-    <table class="table">
+    <table class="table table-hover personal-task">
       <tr>
         <td><%= t "exams.index.title" %></td>
         <td><%= t "exams.index.preview" %></td>
@@ -13,9 +13,11 @@
       </tr>
       <% @exams.each do |exam| %>
         <tr>
-          <td><%= link_to exam.title, exam_path(exam) %></td>
+          <td><%= link_to exam.title, exam_path(exam), title: exam.title %></td>
           <td>
-            <span class="glyphicon glyphicon-eye-open style-span" aria-hidden="true" ></span>
+            <%= link_to preview_path(id: exam.id) do %>
+              <i class="fa fa-eye fa-fw"></i>
+            <% end %>
           </td>
           <td><span class="glyphicon glyphicon glyphicon-globe style-span" aria-hidden="true"></span></td>
           <td><span class="glyphicon glyphicon-align-justify style-span" aria-hidden="true"></span></td>

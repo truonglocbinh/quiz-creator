@@ -1,0 +1,51 @@
+<h1>All User</h1>
+<div class="row">
+  <div class="btn-toolbar">
+    <%= link_to  new_admin_user_path, class: "btn btn-primary" do %>
+      <i class="fa fa-user-plus"></i>
+      New admin
+    <% end %>
+    <%= link_to new_admin_category_path, class: "btn btn-primary"  do %>
+      <i class="fa fa-shopping-basket"></i>
+      New Category
+    <% end %>
+    <%= link_to admin_categories_path, class: "btn btn-primary"  do %>
+      <i class="fa fa-shopping-bag"></i>
+      All Category
+    <% end %>
+  </div>
+  <div class="well user-content" style="margin-top: 20px;">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th></th>
+            <th></th>
+            <th>
+              <input type="text" class="form-control" placeholder="Email" id="filter-email">
+            </th>
+            <th>
+              <select class="form-control" id="filter-role">
+                <option value="all">All</option>
+                <option value="1">Customer</option>
+                <option value="0">Admin</option>
+              </select>
+            </th>
+          </tr>
+          <%= render @users %>
+        </tbody>
+      </table>
+      <div class="pagination">
+        <%= paginate @users %>
+      </div>
+  </div>
+
+</div>
+

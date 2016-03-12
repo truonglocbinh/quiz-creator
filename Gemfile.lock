@@ -48,6 +48,9 @@ GEM
     builder (3.2.2)
     byebug (8.2.2)
     cancancan (1.13.1)
+    ckeditor (4.1.6)
+      cocaine
+      orm_adapter (~> 0.5.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.8)
@@ -76,8 +79,12 @@ GEM
     execjs (2.6.0)
     faker (1.6.1)
       i18n (~> 0.5)
+    fancybox2-rails (0.2.8)
+      railties (>= 3.1.0, < 5.0)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
+    font-awesome-rails (4.5.0.1)
+      railties (>= 3.2, < 5.1)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     hashie (3.4.3)
@@ -91,6 +98,12 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.3)
     jwt (1.5.2)
+    kaminari (0.16.3)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+    kaminari-bootstrap (3.0.1)
+      kaminari (>= 0.13.0)
+      rails
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -209,12 +222,17 @@ DEPENDENCIES
   bootstrap-will_paginate (= 0.0.10)
   byebug
   cancancan (~> 1.10)
+  ckeditor
   coffee-rails (~> 4.1.0)
   config
   devise
   faker
+  fancybox2-rails
+  font-awesome-rails
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
+  kaminari-bootstrap
   omniauth
   omniauth-facebook
   omniauth-google-oauth2

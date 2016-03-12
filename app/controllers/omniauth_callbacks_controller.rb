@@ -4,11 +4,11 @@ class OmniauthCallbacksController < ApplicationController
   def all
     p env["omniauth.auth"]
     user = User.from_omniauth(env["omniauth.auth"])
-    if user.persisted?
+    unless user.nil?
       sign_in_and_redirect user
     else
-      session["devise.user_attributes"] = user.attributes
-      redirect_to new_user_registration_url
+      session[:email] = env["omniauth.auth"].uid + "@quiz-creator.com"
+      redirect_to socials_infor_url
     end
   end
 

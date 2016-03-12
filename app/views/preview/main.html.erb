@@ -1,0 +1,20 @@
+<h3><%= @exam.title %></h3>
+<hr>
+<% if @exam.description? %>
+  <h4><%= @exam.description %></h4>
+  <hr>
+<% end %>
+<div class="row show-question">
+  <div class="col-md-10 col-md-offset-1">
+    <% if @questions.size < 1 %>
+      <span class="label label-danger">No question</span>
+    <% else %>
+      <ol>
+        <% @questions.each do |question| %>
+          <%= render "question", f: question %>
+        <% end %>
+      </ol>
+    <% end %>
+  </div>
+</div>
+

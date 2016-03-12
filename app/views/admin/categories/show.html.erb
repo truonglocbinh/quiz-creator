@@ -1,0 +1,14 @@
+<div class="row">
+  <h1><%= @category.title %></h1>
+</div>
+<div class="row">
+  <%= link_to edit_admin_category_path(@category), class: "btn btn-primary" do %>
+    <i class="fa fa-pencil"></i>
+    <%= t "button.edit" %>
+  <% end %>
+  <%= link_to admin_category_path(@category), method: :delete,
+    data: {confirm: "Are you sure ?"},class: "btn btn-danger" do %>
+    <i class="fa fa-times"></i>
+    <%= t "button.delete" %>
+  <% end %>
+</div>

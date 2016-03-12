@@ -19,6 +19,11 @@ gem "omniauth-google-oauth2"
 gem "will_paginate",           "3.0.7"
 gem "bootstrap-will_paginate", "0.0.10"
 gem "paperclip"
+gem "fancybox2-rails"
+gem "font-awesome-rails"
+gem "ckeditor"
+gem "kaminari"
+gem "kaminari-bootstrap"
 
 group :development, :test do
   gem "byebug"

@@ -15,5 +15,8 @@ Category.create!(title: "History")
   @exam = @user.exams.build title: "test #{n}"
   @exam.save
 end
+100.times do |n|
+  User.create!(email: "quiz-#{n}@hust.com", name: "name is #{n}", password: "12345678", password_confirmation: "12345678")
+end
 
-
+# User.create!(email: "admin@hust.com", name: "admin", password: "12345678", password_confirmation: "12345678", role: 0)

@@ -7,21 +7,14 @@
   background-color: #428bca;
   border-color: #428bca
 }
-form{
-  display: block;
-  margin-top: 0em;
-  background-color: #A4C8E8;
-  border-radius: 2px;
-  box-shadow: 0 1px 1px #ccc;
-  font-size: 16px;
-  padding: 30px 20px;
-}
+
 .control-label{
   text-align: right;
   padding-top: 7px;
   margin-top: 0;
   margin-bottom: 0;
 }
+
 form legend{
   color: #404040;
   font-size: 42px;
@@ -30,6 +23,7 @@ form legend{
   line-height: 1;
   text-shadow: 0 3px 0 rgba(0,0,0,0.1);
 }
+
 legend{
   border: 0;
   border-bottom: 1px solid #e5e5e5;
@@ -37,3 +31,31 @@ legend{
   padding:0;
   width: 100%;
 }
+
+.image-exam{
+  max-width: 525px;
+}
+
+.btn-sq-lg {
+  width: 150px !important;
+  height: 150px !important;
+}
+
+.btn-sq {
+  width: 100px !important;
+  height: 100px !important;
+  font-size: 10px;
+}
+
+.btn-sq-sm {
+  width: 50px !important;
+  height: 50px !important;
+  font-size: 10px;
+}
+
+.btn-sq-xs {
+  width: 25px !important;
+  height: 25px !important;
+  padding:2px;
+}
+

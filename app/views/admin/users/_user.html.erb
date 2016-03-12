@@ -1,0 +1,12 @@
+<tr class="user-data">
+  <td><%= user.id %></td>
+  <td><%= user.name %></td>
+  <td><%= user.email%></td>
+  <td>
+    <% if user.customer? %>
+    <span class="label label-primary">Customer</span>
+    <% else %>
+    <span class="label label-danger">Admin</span>
+    <% end %>
+  </td>
+</tr>

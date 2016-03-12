@@ -5,12 +5,20 @@
   <div class="col-md-4">
     <ul class="nav nav-pills">
       <li role="presentation" class="active">
-        <%= link_to t("button.edit"), edit_exam_path(@exam) %>
+        <%= link_to edit_exam_path @exam do %>
+          <i class="fa fa-pencil fa-fw"></i>
+          <%= t("button.edit") %>
+        <% end %>
       </li>
-      <li role="presentation" class="active">
-        <%= link_to t("button.new_question"), new_exam_question_path(@exam) %>
+      <li role="presentation", class="active" >
+        <%= link_to new_exam_question_path(@exam), class: "btn btn-primary" do %>
+          <i class="fa fa-plus"></i>
+          <%= t("button.new_question") %>
+        <% end %>
       </li>
-      <li role="presentation" class="active"><a href="#">Setting</a></li>
+      <li role="presentation", class="active">
+        <a href="#"><i class="fa fa-cog fa-fw"></i>Setting</a>
+      </li>
     </ul>
   </div>
 </div>
@@ -24,10 +32,16 @@
       <tr>
         <td><%= question.title %></td>
         <td>
-          <%= link_to t("button.edit"), edit_exam_question_path(@exam, question),
-            class: "btn btn-primary" %>
-          <%= link_to t("button.delete"), exam_question_path(@exam, question), method: :delete,
-            data: {confirm: "Are you sure ?"}, class: "btn btn-danger" %>
+          <%= link_to edit_exam_question_path(@exam, question),
+            class: "btn btn-primary" do %>
+            <i class="fa fa-pencil fa-fw"></i>
+            <%= t("button.edit") %>
+          <% end %>
+          <%= link_to exam_question_path(@exam, question), method: :delete,
+            data: {confirm: "Are you sure ?"}, class: "btn btn-danger" do %>
+            <i class="fa fa-trash-o fa-fw"></i>
+            <%= t("button.delete") %>
+          <% end %>
         </td>
       </tr>
     <% end %>

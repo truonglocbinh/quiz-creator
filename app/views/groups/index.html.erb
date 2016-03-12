@@ -1,0 +1,27 @@
+<div class="panel panel-primary">
+  <div class="panel-heading" style="font-size:large">
+    <%= t ".my_group" %>
+  </div>
+  <div class="panel-body">
+    <table class="table">
+      <tr>
+        <td><%= t ".name" %></td>
+        <td></td>
+      </tr>
+      <% @my_groups.each do |group| %>
+        <tr>
+          <td><%= link_to group.name, group_path(group) %></td>
+          <td>
+            <%= link_to t("button.edit"),edit_group_path(group), class: "btn btn-primary" %>
+            <%= link_to t("button.delete"), group_path(group),
+              method: :delete, data: {confirm: "Are you sure ?"},
+              class: "btn btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <%= will_paginate @my_groups %>
+</div>

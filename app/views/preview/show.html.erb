@@ -1,0 +1,23 @@
+<div class="row">
+  <h2><%= @exam.title %></h2>
+  <div class="infor-exam">
+    <span class="label label-danger"><%= @exam.questions.size%> Questions</span>&nbsp;
+    <span><i>By <%= @exam.user.email %></i></span>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <% if @exam.description? %>
+    <h4><%= @exam.description %></h4>
+    <hr>
+  <% end %>
+</div>
+
+<div class="row" style="margin-bottom: 20px;">
+  <% if @exam.avatar_file_name.nil? %>
+    <%= image_tag "exam", class: "image-exam" %>
+  <% else %>
+    <%= image_tag @exam.avatar.url, class: "image-exam" %>
+  <% end %>
+</div>
+<%= link_to "Start", main_path(id: @exam.id), class: "btn btn-primary custom-btn" %>
