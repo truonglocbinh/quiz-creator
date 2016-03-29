@@ -1,0 +1,13 @@
+<% provide :title, t("title.add_user") %>
+<h1>Add User</h1>
+<%= form_for :user, url: result_path , method: :post, remote:true  do |f| %>
+  <%= f.hidden_field :group_id, value: @group.id %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.submit t("button.search"), class: "btn btn-danger" %>
+  </div>
+<% end %>
+<div class="result"></div>

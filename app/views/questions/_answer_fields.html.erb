@@ -1,10 +1,10 @@
-<div class="fields" style="padding-top: 20px;">
+<div class="fields" style="padding-top: 20px; border-bottom: 1px solid #C0C0C0;">
     <div class="row">
-      <div class="col-md-1 checkbox-question">
-        <%= f.check_box :correct, class: "checkbox" %>
+      <div class="col-md-1 checkbox-question" >
+        <%= f.check_box :correct, class: "checkbox checkbox-answer" %>
       </div>
-      <div class="col-md-9">
-        <%= f.text_field :content, class: "form-control" %>
+      <div class="col-md-9" data-no-turbolink>
+        <%= f.cktext_area :content, class: "form-control ckeditor" %>
       </div>
       <div class="col-md-2 remove-answer">
         <%= link_to_remove_fields t("questions.new.delete"), f %><br />

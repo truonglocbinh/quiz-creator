@@ -1,9 +1,10 @@
+<% provide :title, t("title.group") %>
 <div class="panel panel-primary">
   <div class="panel-heading" style="font-size:large">
     <%= t ".my_group" %>
   </div>
   <div class="panel-body">
-    <table class="table">
+    <table class="table table-striped">
       <tr>
         <td><%= t ".name" %></td>
         <td></td>
@@ -12,10 +13,16 @@
         <tr>
           <td><%= link_to group.name, group_path(group) %></td>
           <td>
-            <%= link_to t("button.edit"),edit_group_path(group), class: "btn btn-primary" %>
-            <%= link_to t("button.delete"), group_path(group),
-              method: :delete, data: {confirm: "Are you sure ?"},
-              class: "btn btn-danger" %>
+            <%= link_to edit_group_path(group), class: "btn btn-primary" do  %>
+              <span class="glyphicon glyphicon-edit"></span>
+              <%= t "button.edit" %>
+            <% end %>
+            <%= link_to group_path(group),
+              method: :delete, data: {confirm: t("message.confirm")},
+              class: "btn btn-danger" do %>
+              <span class="glyphicon glyphicon-remove"></span>
+              <%= t "button.delete" %>
+            <% end %>
           </td>
         </tr>
       <% end %>

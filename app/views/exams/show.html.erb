@@ -11,13 +11,16 @@
         <% end %>
       </li>
       <li role="presentation", class="active" >
-        <%= link_to new_exam_question_path(@exam), class: "btn btn-primary" do %>
+        <%= link_to new_exam_question_path(@exam) do %>
           <i class="fa fa-plus"></i>
           <%= t("button.new_question") %>
         <% end %>
       </li>
       <li role="presentation", class="active">
-        <a href="#"><i class="fa fa-cog fa-fw"></i>Setting</a>
+        <%= link_to exam_setting_path(@exam) do %>
+          <i class="fa fa-cog"></i>
+          <%= t "exams.show.setting" %>
+        <% end %>
       </li>
     </ul>
   </div>
@@ -30,7 +33,7 @@
     </tr>
     <% @questions.each do |question| %>
       <tr>
-        <td><%= question.title %></td>
+        <td><%= sanitize question.title.html_safe.truncate(100)  %></td>
         <td>
           <%= link_to edit_exam_question_path(@exam, question),
             class: "btn btn-primary" do %>

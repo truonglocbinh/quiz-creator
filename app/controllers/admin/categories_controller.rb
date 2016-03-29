@@ -47,6 +47,6 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def category_params
-    params.require(:category).permit :title
+    params.require(:category).permit Category::ATTRIBUTES_PARAMS
   end
 end

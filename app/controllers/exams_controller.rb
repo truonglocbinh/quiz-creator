@@ -39,6 +39,6 @@ class ExamsController < ApplicationController
   end
 
   def exam_params
-    params.require(:exam).permit :title, :category_id, :description, :subject_id, :avatar
+    params.require(:exam).permit Exam::ATTRIBUTES_PARAMS
   end
 end

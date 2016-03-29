@@ -1,8 +1,10 @@
 <div class="row">
   <h2><%= @exam.title %></h2>
   <div class="infor-exam">
-    <span class="label label-danger"><%= @exam.questions.size%> Questions</span>&nbsp;
-    <span><i>By <%= @exam.user.email %></i></span>
+    <span class="label label-danger">
+      <%= @exam.questions.size %> <%= t "preview.show.question" %>
+    </span>&nbsp;
+    <span><i><%= t "preview.show.by" %> <%= @exam.user.email %></i></span>
   </div>
 </div>
 <hr>
@@ -20,4 +22,4 @@
     <%= image_tag @exam.avatar.url, class: "image-exam" %>
   <% end %>
 </div>
-<%= link_to "Start", main_path(id: @exam.id), class: "btn btn-primary custom-btn" %>
+<%= link_to t("button.start"), main_path(id: @exam.id), class: "btn btn-primary custom-btn" %>

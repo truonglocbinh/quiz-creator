@@ -4,7 +4,7 @@ class PreviewController < ApplicationController
   end
 
   def main
-    @questions = @exam.questions
+    @questions = @exam.questions.page(params[:page]).per(5)
   end
 
   private

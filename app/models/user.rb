@@ -12,7 +12,10 @@ class User < ActiveRecord::Base
   has_many :exams, dependent: :destroy
   has_many :subjects, dependent: :destroy
   has_many :groups, dependent: :destroy
-
+  has_many :user_groups, dependent: :destroy
+  has_many :joined_groups, through: :user_groups, source: :group
+  ATTRIBUTES_PARAMS = [:email, :password, :password_confirmation, :name]
+  ADMIN_PARAMS = [:email, :password, :password_confirmation, :role]
   def self.filter_user role, email
     if role == "all"
       @users = User.where("email LIKE ?", "%#{email}%")

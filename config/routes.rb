@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'socials/infor'
+  get "socials/infor"
 
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   root "static_page#home"
@@ -7,12 +7,20 @@ Rails.application.routes.draw do
   get "preview", to: "preview#show", as: :preview
   get "preview/main", to: "preview#main", as: :main
   get "profile", to: "users#show", as: :profile
-  resources :groups, :users
+  get "add_user", to: "add_user_to_group#find_user", as: :add_user
+  post "result", to: "add_user_to_group#result_of_find_user", as: :result
+  get "add_exam", to: "add_exam_to_group#add_exam", as: :add_exam
+  resources :users
+  resources :groups do
+    resources :user_groups
+    resources :exam_groups
+  end
   resources :subjects do
     resources :questions
   end
   resources :exams do
     resources :questions
+    resource  :setting
   end
   namespace :admin do
     root "users#index"

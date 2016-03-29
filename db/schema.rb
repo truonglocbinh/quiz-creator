@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160307010509) do
+ActiveRecord::Schema.define(version: 20160329062714) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "content"
@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(version: 20160307010509) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "exam_groups", force: :cascade do |t|
+    t.integer  "exam_id"
+    t.integer  "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -69,12 +76,32 @@ ActiveRecord::Schema.define(version: 20160307010509) do
     t.datetime "avatar_updated_at"
   end
 
+  create_table "settings", force: :cascade do |t|
+    t.integer  "exam_id"
+    t.integer  "score",          default: 100
+    t.integer  "time_limit",     default: 0
+    t.boolean  "order_question", default: false
+    t.boolean  "order_answer",   default: false
+    t.boolean  "send_email",     default: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "settings", ["exam_id"], name: "index_settings_on_exam_id"
+
   create_table "subjects", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "user_groups", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

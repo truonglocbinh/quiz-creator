@@ -1,3 +1,5 @@
+<% alphabet = ("A".."Z").to_a.take f.answers.size %>
+<% i = 0  %>
 <div class="col-md-12">
   <div class="panel panel-green">
     <div class="panel-heading"><li><strong><%= f.title %></strong></li></div>
@@ -10,16 +12,30 @@
      <div class="answer-body">
         <% if f.single_choice? %>
           <% f.answers.each do |ans| %>
-            <div class="radio">
-               <input type="radio" name="radio1" value="<%= ans.id%>">
-               <label class="label-answer"><%= ans.content %></label>
+            <div class="radio" style="border-bottom:1px solid #ddd; padding: 5px;">
+              <%= alphabet[i] %>.
+              <% i= i + 1 %>
+              <input type="radio" name="radio1" value="<%= ans.id %>">
+              <label class="label-answer"><%= ans.content %></label>
+              <div class="image-answer">
+                <% unless ans.avatar_file_name.nil? %>
+                  <%= image_tag ans.avatar.url, class: "image-exam" %>
+                <% end %>
+              </div>
             </div>
           <% end %>
         <% elsif f.multiple_choice? %>
           <% f.answers.each do |ans| %>
-            <div class="checkbox checkbox-primary">
+            <div class="checkbox checkbox-primary" style="border-bottom:1px solid #ddd">
+              <%= alphabet[i] %>.
+              <% i = i + 1 %>
               <input type="checkbox" name="preview" value="<%= ans.id %>">
               <label class="label-answer"><%= ans.content %></label>
+              <div class="image-answer">
+                <% unless ans.avatar_file_name.nil? %>
+                  <%= image_tag ans.avatar.url, class: "image-exam" %>
+                <% end %>
+              </div>
             </div>
           <% end %>
         <% else %>

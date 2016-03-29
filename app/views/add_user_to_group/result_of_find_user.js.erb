@@ -1,0 +1,5 @@
+<% if @errors.present? %>
+  $(".result").html("<%= @errors %>")
+<% else %>
+  $(".result").html("User has  been invited to your group !")
+<% end %>

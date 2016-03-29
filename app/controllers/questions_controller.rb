@@ -64,7 +64,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit :title, :feedback, :question_type, :avatar,
-      :exam_id, answers_attributes: [:id, :content, :correct, :avatar, :_destroy]
+    params.require(:question).permit Question::ATTRIBUTES_PARAMS
   end
 end

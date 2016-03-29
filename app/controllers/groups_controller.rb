@@ -31,7 +31,7 @@ class GroupsController < ApplicationController
   def update
     if @group.update_attributes group_params
       flash[:success] = t "flash.update_success"
-      redirect_to root_url
+      redirect_to :back
     else
       render :edit
     end
@@ -52,6 +52,6 @@ class GroupsController < ApplicationController
   end
 
   def group_params
-    params.require(:group).permit :name, :description
+    params.require(:group).permit Group::ATTRIBUTES_PARAMS
   end
 end

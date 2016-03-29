@@ -1,2 +1,46 @@
-<h1><%= @group.name %></h1>
-<p><%= @group.description %></p>
+<% provide :title, @group.name %>
+<div class="row">
+  <div class="col-md-8">
+    <h2><%= @group.name %></h2>
+    <p><%= @group.description %></p>
+  </div>
+  <div class="col-md-4">
+    <ul class="nav nav-pills">
+      <li role="presentation", class="active" >
+        <%= link_to edit_group_path(@group) do %>
+          <i class="fa fa-pencil"></i>
+          <%= t("button.edit") %>
+        <% end %>
+      </li>
+      <li role="presentation", class="active" >
+        <%= link_to group_exam_groups_path(@group) do %>
+          <i class="fa fa-file"></i>
+          Exam
+        <% end %>
+      </li>
+      <li role="presentation", class="active">
+        <%= link_to group_user_groups_path(@group) do %>
+          <i class="fa fa-user"></i>
+          <%= t("button.student") %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped custab">
+      <tr>
+        <td>#</td>
+        <td><%= t "groups.show.student" %></td>
+        <td><%= t "groups.show.exam" %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><h3><span class="label label-primary"><%= @group.users.size %></span></h3></td>
+        <td><h3><span class="label label-primary"><%= @group.exams.size %></span></h3></td>
+      </tr>
+    </table>
+  </div>
+</div>

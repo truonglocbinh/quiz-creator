@@ -3,6 +3,10 @@ en:
   common:
     back: "Back"
     confirm: "Are you sure ?"
+  logo:
+    quiz: QUIZ-CREATOR
+    help: Help
+    users: Users
   title:
     base_title: "Hello quiz"
     sign_up: "Log in to quiz"
@@ -17,11 +21,22 @@ en:
     subject: "Subject"
     new_group: New Group
     edit_group: Edit Group
+    no_name: No name
+    add_exam: Add Exam
+    add_user: Add User
+    add_category: Add Category
+    show_all_category: All Category
+    edit_category: Edit Category
+    all_user: All User
+    all_exam_group: All Exam Group
+    group: "All Group"
   message:
     the_form_contains: "The form contains"
     errors: "errors"
     no_correct: "No correct answer"
     need_content: "Need content for answer"
+    confirm: "Are you sure?"
+    no_question: No question
   button:
     create: "Create"
     edit: "Edit"
@@ -31,10 +46,17 @@ en:
     new_question: "New Question"
     continue: "Create and continue"
     update: "Update"
+    add_user: "Add User"
+    search: "Invite"
+    student: "Student"
+    add_exam: Add Exam
+    back: Back
+    start: Start
   flash:
     update_exam: "Update exam successfully !"
     create_success: "Create successfully!"
     update_success: "Update successfully!"
+    update_failed: Update failed
     delete_success: "Delete successfully!"
     delete_failed: "Delete failed"
   devise:
@@ -57,6 +79,8 @@ en:
     new: "Create new exam !"
     edit: "Edit exam !"
     my_exams: "My exams"
+    show:
+      setting: Setting
     index:
       title: "TITLE"
       preview: "PREVIEW"
@@ -81,6 +105,9 @@ en:
     index:
       my_group: My Groups
       name: Name
+    show:
+      student: Students
+      exam: Exams
   category:
     edit:
       edit_cate: "Edit category"
@@ -89,6 +116,22 @@ en:
     index:
       all: "All Category"
       title: "Title"
+  preview:
+    show:
+      question: Questions
+      by: By
+  setting:
+    time_score: "Score & Time"
+    order: Order
+    security: Security
+    minutes: minutes
+    config: Config
+  model:
+    user:
+      name: Name
+      email: Email
+    exam:
+      title: Title
 
 
 

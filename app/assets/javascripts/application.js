@@ -16,6 +16,7 @@
 //= require bootstrap
 //= require fancybox
 //= require ckeditor/init
+//= require ckeditor/config.js
 //= require_tree .
 
 $(document).on("page:change", function(){
@@ -50,7 +51,6 @@ $(document).on("page:change", function(){
       });
     }
   });
-
   $(document).on("click",".checkbox-question input[type=checkbox]", function(){
     var elem = $(this);
     var id = $(this).attr("id");
@@ -104,3 +104,8 @@ function filter_user(email, role){
     }
     })
 }
+$(document).bind('page:change', function() {
+  $('.ckeditor').each(function() {
+    CKEDITOR.replace($(this).attr('id'));
+  });
+});

@@ -1,0 +1,36 @@
+<% provide :title, t("title.all_exam_group") %>
+<div class="row">
+  <div class="col-md-8">
+    <h2><%= @group.name %></h2>
+    <p><%= @group.description %></p>
+  </div>
+  <div class="col-md-4">
+    <ul class="nav nav-pills">
+      <li role="presentation", class="active" >
+        <%= link_to add_exam_path(group_id: @group.id) do %>
+          <i class="fa fa-plus"></i>
+          <%= t("button.add_exam") %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <table class="table table-striped">
+    <tr>
+      <td>#</td>
+      <td><%= t "model.exam.title" %></td>
+      <td></td>
+    </tr>
+    <% @exams.each do |exam| %>
+      <tr>
+        <td></td>
+        <td><%= link_to exam.title, exam_path(exam) %></td>
+        <td></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+<div class="row">
+  <%= link_to t("button.back"), :back, class: "btn btn-primary" %>
+</div>

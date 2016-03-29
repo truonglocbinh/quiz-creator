@@ -7,7 +7,7 @@
 <div class="row show-question">
   <div class="col-md-10 col-md-offset-1">
     <% if @questions.size < 1 %>
-      <span class="label label-danger">No question</span>
+      <span class="label label-danger"><%= t "message.no_question" %></span>
     <% else %>
       <ol>
         <% @questions.each do |question| %>
@@ -17,4 +17,6 @@
     <% end %>
   </div>
 </div>
-
+<div class="pagination">
+  <%= paginate @questions %>
+</div>

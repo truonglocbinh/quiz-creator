@@ -1,6 +1,6 @@
 <header class="navbar navbar-fixed-top navbar-inverse custom-nav">
   <div class="container">
-    <%= link_to "Quiz-creator", "#", id: "logo" %>
+    <%= link_to t("logo.quiz"), root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-top-links navbar-right">
         <li>
@@ -8,11 +8,11 @@
             <i class="fa fa-home"></i>
           <% end %>
         </li>
-        <li><%= link_to "Help",   "#" %></li>
+        <li><%= link_to t("logo.help"), "#" %></li>
         <% if user_signed_in? %>
           <% if current_user.admin? %>
             <li>
-              <%= link_to admin_users_path, title: "Users" do %>
+              <%= link_to admin_users_path, title: t("logo.users") do %>
               <i class="fa fa-users"></i>
               <% end %>
             </li>
