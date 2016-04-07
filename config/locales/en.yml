@@ -30,6 +30,7 @@ en:
     all_user: All User
     all_exam_group: All Exam Group
     group: "All Group"
+    my_class: My Class
   message:
     the_form_contains: "The form contains"
     errors: "errors"
@@ -52,6 +53,7 @@ en:
     add_exam: Add Exam
     back: Back
     start: Start
+    pdf: Pdf
   flash:
     update_exam: "Update exam successfully !"
     create_success: "Create successfully!"
@@ -81,6 +83,8 @@ en:
     my_exams: "My exams"
     show:
       setting: Setting
+      no_description: No description
+      score: Score
     index:
       title: "TITLE"
       preview: "PREVIEW"
@@ -120,6 +124,10 @@ en:
     show:
       question: Questions
       by: By
+  my_class:
+    all:
+      class_name: Name
+      owner: Owner
   setting:
     time_score: "Score & Time"
     order: Order

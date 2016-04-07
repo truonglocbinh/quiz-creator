@@ -6,7 +6,7 @@ class GroupsController < ApplicationController
   end
 
   def show
-
+    @exam_users = ExamUser.where group_id: @group.id
   end
 
   def new

@@ -14,5 +14,7 @@
  *= require fancybox
  *= require font-awesome
  *= require sb-admin-2.css
+ *= require AdminLTE
+ *= require bootstrap-datetimepicker
  *= require_self
  */

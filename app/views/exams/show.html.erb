@@ -1,13 +1,19 @@
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-6" style="padding-left: 0;">
     <h3><%= @exam.title %></h3>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-6">
     <ul class="nav nav-pills">
       <li role="presentation" class="active">
         <%= link_to edit_exam_path @exam do %>
           <i class="fa fa-pencil fa-fw"></i>
           <%= t("button.edit") %>
+        <% end %>
+      </li>
+      <li role="presentation" class="active">
+        <%= link_to exam_path(@exam, format: "pdf") do %>
+          <i class="fa fa-file-pdf-o fa-fw"></i>
+          <%= t("button.pdf") %>
         <% end %>
       </li>
       <li role="presentation", class="active" >
@@ -25,29 +31,54 @@
     </ul>
   </div>
 </div>
-<div class="row questions">
-  <table class="table">
-    <tr>
-      <td><%= t ".title" %></td>
-      <td></td>
-    </tr>
-    <% @questions.each do |question| %>
-      <tr>
-        <td><%= sanitize question.title.html_safe.truncate(100)  %></td>
-        <td>
-          <%= link_to edit_exam_question_path(@exam, question),
-            class: "btn btn-primary" do %>
-            <i class="fa fa-pencil fa-fw"></i>
-            <%= t("button.edit") %>
-          <% end %>
-          <%= link_to exam_question_path(@exam, question), method: :delete,
-            data: {confirm: "Are you sure ?"}, class: "btn btn-danger" do %>
-            <i class="fa fa-trash-o fa-fw"></i>
-            <%= t("button.delete") %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
+<hr>
 
+<div class="row exam-description">
+  <% unless @exam.description.nil? %>
+    <%= @exam.description %>
+  <% else %>
+    <span class="label label-danger"><%= t "exams.show.no_description" %></span>
+  <% end %>
+</div>
+
+<div class="row questions">
+  <div class="box">
+    <div class="box-header">
+      <h3 class="box-title">All Questions</h3>
+    </div>
+      <!-- /.box-header -->
+    <div class="box-body">
+      <table id="example2" class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th><%= t ".title" %></th>
+            <th><%= t "exams.show.score" %></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+         <% @questions.each do |question| %>
+            <tr>
+              <td>
+                <%= sanitize question.title.html_safe.truncate(100) %>
+              </td>
+              <td><%= question.score %></td>
+              <td>
+                <%= link_to edit_exam_question_path(@exam, question),
+                  class: "btn btn-primary" do %>
+                  <i class="fa fa-pencil fa-fw"></i>
+                  <%= t("button.edit") %>
+                <% end %>
+                <%= link_to exam_question_path(@exam, question), method: :delete,
+                  data: {confirm: "Are you sure ?"}, class: "btn btn-danger" do %>
+                  <i class="fa fa-trash-o fa-fw"></i>
+                  <%= t("button.delete") %>
+                <% end %>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

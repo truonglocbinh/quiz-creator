@@ -1,0 +1,3 @@
+$(".modal-show-exam-user").html("<%= escape_javascript(render partial: 'modal',
+  locals: {exam_user: @exam_user, group: @group}) %>")
+$("#myModal").modal();

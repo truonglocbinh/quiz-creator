@@ -2,29 +2,38 @@
 <h2><%= t "category.index.all" %></h2>
 <div class="row">
   <table class="table">
-    <tr>
-      <td>#</td>
-      <td><%= t "category.index.title" %></td>
-      <td></td>
-    </tr>
-    <% @categories.each do |item| %>
+    <thead>
       <tr>
-        <td><%= item.id %></td>
-        <td>
-          <%= link_to item.title, [:admin, item], title: item.title %>
-        </td>
-        <td>
-          <%= link_to edit_admin_category_path(item), class: "btn btn-primary" do %>
-            <i class="fa fa-pencil"></i>
-            <%= t "button.edit" %>
-          <% end %>
-           <%= link_to admin_category_path(item), method: :delete,
-            data: {confirm: "Are you sure ?"},class: "btn btn-danger" do %>
-            <i class="fa fa-times"></i>
-            <%= t "button.delete" %>
-          <% end %>
-        </td>
+        <td>#</td>
+        <td><%= t "category.index.title" %></td>
+        <td></td>
       </tr>
-    <% end %>
+      <tr>
+        <td></td>
+        <td><input type="text" class="form-control" placeholder="Name" id="filter-category"></td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @categories.each_with_index do |item, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td>
+            <%= link_to item.title, [:admin, item], title: item.title %>
+          </td>
+          <td>
+            <%= link_to edit_admin_category_path(item), class: "btn btn-primary" do %>
+              <i class="fa fa-pencil"></i>
+              <%= t "button.edit" %>
+            <% end %>
+             <%= link_to admin_category_path(item), method: :delete,
+              data: {confirm: "Are you sure ?"},class: "btn btn-danger" do %>
+              <i class="fa fa-times"></i>
+              <%= t "button.delete" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
 </div>

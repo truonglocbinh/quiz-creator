@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160329062714) do
+ActiveRecord::Schema.define(version: 20160405113946) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "content"
@@ -34,6 +34,28 @@ ActiveRecord::Schema.define(version: 20160329062714) do
   create_table "exam_groups", force: :cascade do |t|
     t.integer  "exam_id"
     t.integer  "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "exam_questions", force: :cascade do |t|
+    t.integer  "exam_id"
+    t.integer  "group_id"
+    t.string   "title"
+    t.text     "feedback"
+    t.integer  "question_type"
+    t.integer  "score",         default: 1
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "exam_users", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "exam_id"
+    t.integer  "group_id"
+    t.integer  "status"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -62,14 +84,23 @@ ActiveRecord::Schema.define(version: 20160329062714) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "from"
+    t.integer  "to"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "questions", force: :cascade do |t|
     t.string   "title"
     t.text     "feedback"
     t.integer  "question_type"
+    t.integer  "score",               default: 1
     t.integer  "exam_id"
     t.integer  "subject_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"

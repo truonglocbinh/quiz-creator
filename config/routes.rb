@@ -10,10 +10,14 @@ Rails.application.routes.draw do
   get "add_user", to: "add_user_to_group#find_user", as: :add_user
   post "result", to: "add_user_to_group#result_of_find_user", as: :result
   get "add_exam", to: "add_exam_to_group#add_exam", as: :add_exam
-  resources :users
+  get "all_class", to: "my_class#all_class", as: :all_class
+  get "assignexam", to: "assign_exam#show", as: :show_assign
+  post "assign", to: "assign_exam#assign", as: :assign
+  resources :users, :notifications
   resources :groups do
     resources :user_groups
     resources :exam_groups
+    resources :exam_users
   end
   resources :subjects do
     resources :questions
@@ -28,5 +32,9 @@ Rails.application.routes.draw do
   end
   namespace :api do
     resources :users
+    resources :categories
+    resources :exams
+    resources :groups
+    resources :exam_users
   end
 end

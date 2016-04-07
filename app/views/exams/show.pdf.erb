@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-md-8"><h3><%= @exam.title %></h3></div>
+  <div class="col-md-4"><h3><%= @exam.user.email %></h3></div>
+</div>
+<hr>
+<% if @exam.description? %>
+  <h4><%= @exam.description %></h4>
+  <hr>
+<% end %>
+<div class="row show-question">
+  <div class="col-md-10 col-md-offset-1">
+    <% if @questions.size < 1 %>
+      <span class="label label-danger"><%= t "message.no_question" %></span>
+    <% else %>
+      <ol>
+        <% @questions.each do |f| %>
+          <% alphabet = ("A".."Z").to_a.take f.answers.size %>
+          <% i = 0  %>
+          <div class="col-md-12" style="margin: 15px;">
+            <div class="panel panel-green">
+              <div class="panel-heading"><li><strong><%= f.title %></strong></li></div>
+                <div class="panel-body">
+                  <div class="image-answer">
+                    <% unless f.avatar_file_name.nil? %>
+                      <%= image_tag f.avatar.url, class: "image-exam" %>
+                    <% end %>
+                  </div>
+              <div class="answer-body">
+                <% f.answers.each do |ans| %>
+                  <div class="radio" style="border-bottom:1px solid #ddd; padding: 5px;">
+                    <%= alphabet[i] %>.
+                    <% i= i + 1 %>
+                    <label class="label-answer"><%= ans.content %></label>
+                    <div class="image-answer">
+                      <% unless ans.avatar_file_name.nil? %>
+                      <%= image_tag ans.avatar.url, class: "image-exam" %>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+             </div>
+            </div>
+          </div>
+        <% end %>
+      </ol>
+    <% end %>
+  </div>
+</div>

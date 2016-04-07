@@ -1,0 +1,27 @@
+<tr>
+  <td>
+    <select class="form-control" id="filter-student-name" data-group="<%= @group.id %>">
+      <option value="all">All</option>
+      <% @group.users.each do |user| %>
+        <option value="<%= user.id %>"><%= user.email %></option>
+      <% end %>
+    </select>
+  </td>
+  <td>
+    <select class="form-control" id="filter-exam-name">
+      <option value="all">All</option>
+      <% @group.exams.each do |exam| %>
+        <option value="<%= exam.id %>"><%= exam.title %></option>
+      <% end %>
+    </select>
+  </td>
+  <td>
+    <select class="form-control" id="filter-status">
+      <option value="all">All</option>
+      <option value="init">Init</option>
+      <option value="starting">Starting</option>
+      <option value="finished">Finished</option>
+    </select>
+  </td>
+  <td></td>
+</tr>

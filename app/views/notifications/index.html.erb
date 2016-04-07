@@ -1,0 +1,53 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper notification-all">
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    My notifications
+    <small><%= current_user.email %></small>
+  </h1>
+</section>
+<section class="content">
+
+  <!-- row -->
+  <div class="row">
+    <div class="col-md-12">
+      <!-- The time line -->
+      <ul class="timeline">
+        <!-- timeline time label -->
+        <% @notices.each do |notice| %>
+          <li class="time-label">
+            <span class="bg-orange">
+              <%= notice.created_at %>
+            </span>
+          </li>
+          <!-- /.timeline-label -->
+          <!-- timeline item -->
+          <li>
+            <i class="fa fa-envelope bg-blue"></i>
+            <div class="timeline-item">
+              <span class="time"><i class="fa fa-clock-o"></i>
+                <%= time_ago_in_words(notice.created_at) %> ago.
+              </span>
+
+              <h3 class="timeline-header"><a href="#"><%= User.find(notice.from).email %></a> sent you an notification</h3>
+
+              <div class="timeline-body">
+                <p><%= notice.content %></p>
+              </div>
+              <div class="timeline-footer">
+                <%= link_to "Delete",notification_path(notice),
+                  method: :delete, data: {confirm: t("message.confirm")},
+                  class: "btn btn-danger btn-xs" %>
+              </div>
+            </div>
+          </li>
+          <% end %>
+      </ul>
+    </div>
+    <!-- /.col -->
+  </div>
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

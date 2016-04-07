@@ -4,29 +4,43 @@
   </div>
   <div class="panel-body">
     <table class="table table-hover personal-task">
-      <tr>
-        <td><%= t "exams.index.title" %></td>
-        <td><%= t "exams.index.preview" %></td>
-        <td><%= t "exams.index.share" %></td>
-        <td><%= t "exams.index.report" %></td>
-        <td><%= t "exams.index.last_modified" %></td>
-      </tr>
-      <% @exams.each do |exam| %>
+      <thead>
         <tr>
-          <td><%= link_to exam.title, exam_path(exam), title: exam.title %></td>
-          <td>
-            <%= link_to preview_path(id: exam.id) do %>
-              <i class="fa fa-eye fa-fw"></i>
-            <% end %>
-          </td>
-          <td><span class="glyphicon glyphicon glyphicon-globe style-span" aria-hidden="true"></span></td>
-          <td><span class="glyphicon glyphicon-align-justify style-span" aria-hidden="true"></span></td>
-          <td><%= exam.created_at %></td>
+          <td><%= t "exams.index.title" %></td>
+          <td><%= t "exams.index.preview" %></td>
+          <td><%= t "exams.index.share" %></td>
+          <td><%= t "exams.index.report" %></td>
+          <td><%= t "exams.index.last_modified" %></td>
         </tr>
-      <% end %>
+        <tr>
+          <td>
+          <input type="text" class="form-control" placeholder="Title"
+            id="filter-exam-title">
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @exams.each do |exam| %>
+          <tr>
+            <td><%= link_to exam.title, exam_path(exam), title: exam.title %></td>
+            <td>
+              <%= link_to preview_path(id: exam.id) do %>
+                <i class="fa fa-eye fa-fw"></i>
+              <% end %>
+            </td>
+            <td><span class="glyphicon glyphicon glyphicon-globe style-span" aria-hidden="true"></span></td>
+            <td><span class="glyphicon glyphicon-align-justify style-span" aria-hidden="true"></span></td>
+            <td><%= exam.created_at %></td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
   </div>
 </div>
-<div class="row">
+<div class="row exam-pagination">
   <%= will_paginate @exams %>
 </div>

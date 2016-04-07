@@ -1,0 +1,11 @@
+<tr>
+  <td><%= link_to exam.title, exam_path(exam), title: exam.title %></td>
+  <td>
+    <%= link_to preview_path(id: exam.id) do %>
+    <i class="fa fa-eye fa-fw"></i>
+    <% end %>
+  </td>
+  <td><span class="glyphicon glyphicon glyphicon-globe style-span" aria-hidden="true"></span></td>
+  <td><span class="glyphicon glyphicon-align-justify style-span" aria-hidden="true"></span></td>
+  <td><%= exam.created_at %></td>
+</tr>

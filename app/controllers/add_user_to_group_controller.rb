@@ -10,6 +10,12 @@ class AddUserToGroupController < ApplicationController
       if UserGroup.find_by user_id: @user.id, group_id: @group.id
         @errors = "#{@user.email} has been a member of group "
       else
+
+        Notification.create!(
+          from: current_user.id,
+          to: @user.id,
+          content: "#{current_user.email} has invited you to joined #{@group.name}")
+
         UserGroup.create!(user_id: @user.id, group_id: @group.id)
       end
     else

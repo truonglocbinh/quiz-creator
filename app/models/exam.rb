@@ -4,6 +4,7 @@ class Exam < ActiveRecord::Base
     content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] },
     size: { in: 0..2.megabytes }
   ATTRIBUTES_PARAMS = [:title, :category_id, :description, :subject_id, :avatar]
+
   has_many :questions, dependent: :destroy
   has_many :answers, through: :questions
   has_many :exam_groups
@@ -17,6 +18,9 @@ class Exam < ActiveRecord::Base
   validates :user_id, presence: true
 
   after_create :init_setting
+  def self.search_by_title title
+    @exams = Exam.where("title LIKE ?", "%#{title}%")
+  end
 
   private
   def init_setting

@@ -1,37 +1,39 @@
-<%= form_for @setting, url: {controller: "settings", action: "update"},
-  method: :patch, html: {class: "form-horizontal"} do |f| %>
-  <p class="sub_head"><%= t "setting.time_score" %></p>
-  <div class="form-group">
-    <%= f.label :time_limit,"Time to Complete Exam:", class: "col-md-4" %>
-    <div class="col-md-8">
-      <div class="col-md-2" style="padding-left: 0;">
-        <%= f.number_field :time_limit, min: 0, class: "form-control time-limit"%>
+<div class="row panel panel-default" style="padding: 20px;">
+  <%= form_for @setting, url: {controller: "settings", action: "update"},
+    method: :patch, html: {class: "form-horizontal"} do |f| %>
+    <p class="sub_head"><%= t "setting.time_score" %></p>
+    <div class="form-group">
+      <%= f.label :time_limit,"Time to Complete Exam:", class: "col-md-4" %>
+      <div class="col-md-8">
+        <div class="col-md-2" style="padding-left: 0;">
+          <%= f.number_field :time_limit, min: 0, class: "form-control time-limit"%>
+        </div>
+        <div class="col-md-8 minutes">
+          <span class="label label-danger"><%= t "setting.minutes" %></span>
+        </div>
       </div>
-      <div class="col-md-8 minutes">
-        <span class="label label-danger"><%= t "setting.minutes" %></span>
+    </div>
+    <p class="sub_head"><%= t "setting.order" %></p>
+    <div class="form-group">
+      <%= f.label :order_question, "Order of Questions:", class: "col-md-4" %>
+      <div class="col-md-8">
+        <%= f.check_box :order_question %>
       </div>
     </div>
-  </div>
-  <p class="sub_head"><%= t "setting.order" %></p>
-  <div class="form-group">
-    <%= f.label :order_question, "Order of Questions:", class: "col-md-4" %>
-    <div class="col-md-8">
-      <%= f.check_box :order_question %>
+    <div class="form-group">
+      <%= f.label :order_answer, "Order of Answers", class: "col-md-4" %>
+      <div class="col-md-8">
+        <%= f.check_box :order_answer%>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :order_answer, "Order of Answers", class: "col-md-4" %>
-    <div class="col-md-8">
-      <%= f.check_box :order_answer%>
+    <p class="sub_head"><%= t "setting.security" %></p>
+    <div class="form-group">
+      <%= f.label :send_email, "Send me an email when someone takes my exams", class: "col-md-4" %>
+      <div class="col-md-8">
+        <%= f.check_box :send_email %>
+      </div>
     </div>
-  </div>
-  <p class="sub_head"><%= t "setting.security" %></p>
-  <div class="form-group">
-    <%= f.label :send_email, "Send me an email when someone takes my exams", class: "col-md-4" %>
-    <div class="col-md-8">
-      <%= f.check_box :send_email %>
-    </div>
-  </div>
-  <hr>
-  <%= f.submit t("button.submit"), class: "btn btn-primary" %>
-<% end %>
+    <hr>
+    <%= f.submit t("button.submit"), class: "btn btn-primary" %>
+  <% end %>
+</div>

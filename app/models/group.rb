@@ -11,4 +11,8 @@ class Group < ActiveRecord::Base
 
   validates :name, presence: true
   validates :user_id, presence: true
+
+  def self.filter_by_name name
+    @groups = Group.where("name LIKE ?", "%#{name}%")
+  end
 end

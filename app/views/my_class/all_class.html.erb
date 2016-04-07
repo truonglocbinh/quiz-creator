@@ -1,0 +1,27 @@
+<% provide :title, t("title.my_class") %>
+<div class="row search-bar">
+  <div class="col-md-6"><h1>All Class</h1></div>
+  <div class="col-md-6 search-class">
+    <input type="text" id="search_class_input", class="form-control", placeholder= "Class Name">
+  </div>
+</div>
+<div class="row panel panel-default">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td></td>
+        <td>CLASS YOU'RE IN</td>
+        <td><%= t "my_class.owner" %></td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @my_classes.each_with_index do |val, index| %>
+        <tr>
+          <td style="width: 30px;"><i class="fa fa-graduation-cap"></i></td>
+          <td><%= val.name %></td>
+          <td><span class="label label-danger"><%= val.owner.email %></span></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

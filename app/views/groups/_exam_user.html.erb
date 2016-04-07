@@ -1,0 +1,14 @@
+<tr>
+  <td><%= link_to exam_user.user.email, group_exam_user_path(exam_user.group,exam_user), remote: true %></td>
+  <td><%= exam_user.exam.title %></td>
+  <td>
+    <% if exam_user.init? %>
+      <span class="label label-default"><%= exam_user.status %></span>
+    <% elsif exam_user.starting? %>
+      <span class="label label-primary"><%= exam_user.status %></span>
+    <% else %>
+      <span class="label label-warning"><%= exam_user.status %></span>
+    <% end %>
+  </td>
+  <td></td>
+</tr>

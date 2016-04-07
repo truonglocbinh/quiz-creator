@@ -1,0 +1,64 @@
+<h1>Assign Exam</h1>
+<p>
+  <% unless @errors.nil? %>
+    <%= @errors %>
+  <% end %>
+</p>
+<p>
+  <% unless @time_errors.nil? %>
+    <%= @time_errors %>
+  <% end %>
+</p>
+<div class="row">
+  <%= form_for :assign , url: assign_path, method: :post do |f| %>
+    <%= f.hidden_field :group_id , value: @group.id %>
+    <div class="row">
+      <div class="col-md-2"><%= f.label :exam, "Exam" %></div>
+      <div class="col-md-6">
+        <%= f.select :exam_id, @exams.collect{|u| [u.title, u.id]},{}, class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="row">
+          <div class="form-group">
+            <%= label_tag :start_date, 'Start at' %>
+            <div class="input-group date">
+              <%= text_field_tag :start_date, nil, required: true,
+                class: 'form-control datetimepicker'%>
+              <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-md-push-1">
+        <div class="row">
+         <div class="form-group">
+            <%= label_tag :end_date, 'End at' %>
+            <div class="input-group date">
+              <%= text_field_tag :end_date, nil, required: true,
+                class: 'form-control datetimepicker'%>
+              <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <h6>Student</h6>
+      <div class="row">
+        <ol>
+          <% @students.each do |student| %>
+            <li>
+              <%= check_box_tag "user_ids[]", student.id %>
+              <%= student.email %>
+            </li>
+          <% end %>
+        </ol>
+      </div>
+    </div>
+    <div class="row">
+      <%= f.submit t("button.submit"), class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
