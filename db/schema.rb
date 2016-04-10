@@ -53,11 +53,11 @@ ActiveRecord::Schema.define(version: 20160405113946) do
     t.integer  "user_id"
     t.integer  "exam_id"
     t.integer  "group_id"
-    t.integer  "status"
+    t.integer  "status",     default: 0
     t.datetime "start_date"
     t.datetime "end_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "exams", force: :cascade do |t|
@@ -88,8 +88,9 @@ ActiveRecord::Schema.define(version: 20160405113946) do
     t.integer  "from"
     t.integer  "to"
     t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "no_type",    default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "questions", force: :cascade do |t|

@@ -11,10 +11,15 @@ class ExamUsersController < ApplicationController
   def update
     @exam_user = ExamUser.find params[:id]
     if @exam_user.update_attributes exam_user_params
-      redirect_to @exam_user.group
+      byebug
+      respond_to do |format|
+        @success = "Update successfully !"
+        format.html{}
+        format.js {}
+      end
     else
       respond_to do |format|
-        format.html
+        format.html{}
         format.js {}
       end
     end

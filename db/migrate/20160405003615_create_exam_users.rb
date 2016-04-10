@@ -4,7 +4,7 @@ class CreateExamUsers < ActiveRecord::Migration
       t.belongs_to :user
       t.belongs_to :exam
       t.belongs_to :group
-      t.integer    :status
+      t.integer    :status, default: 0
       t.datetime   :start_date
       t.datetime   :end_date
       t.timestamps null: false

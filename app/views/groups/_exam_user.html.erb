@@ -11,4 +11,15 @@
     <% end %>
   </td>
   <td></td>
+  <td>
+    <% if exam_user.starting? %>
+      <%= form_for Notification.new, remote: true do |f| %>
+        <%= f.hidden_field :from, value: current_user.id %>
+        <%= f.hidden_field :to, value: exam_user.user.id %>
+        <%= f.hidden_field :no_type, value: 1 %>
+        <%= f.hidden_field :content, value: "#{current_user.email} want you take #{exam_user.exam.title} now !" %>
+        <%= f.submit "Remine", class: "btn btn-danger" %>
+      <% end %>
+    <% end %>
+  </td>
 </tr>

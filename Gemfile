@@ -24,7 +24,6 @@ gem "font-awesome-rails"
 gem "ckeditor"
 gem "kaminari"
 gem "kaminari-bootstrap"
-gem "faker"
 gem "wicked_pdf"
 gem "wkhtmltopdf-binary"
 gem "momentjs-rails", ">= 2.9.0"
@@ -38,10 +37,4 @@ end
 group :development do
   gem "web-console", "~> 2.0"
   gem "spring"
-end
-
-group :production do
-  gem "pg",             "0.17.1"
-  gem "rails_12factor", "0.0.2"
-  gem "puma",           "2.11.1"
 end

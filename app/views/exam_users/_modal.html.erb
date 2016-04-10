@@ -4,6 +4,7 @@
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal">&times;</button>
       <h4 class="modal-title"><%= exam_user.user.email %></h4>
+      <h4 class="modal-title"><%= exam_user.exam.title %></h4>
     </div>
     <div class="modal-body">
       <%= form_for exam_user, url: group_exam_user_path(group, exam_user), remote: true do |f| %>
@@ -35,7 +36,24 @@
             </div>
         </div>
         <div class="row">
-          <%= f.submit t("button.submit"), class: "btn btn-primary" %>
+          <div class="col-md-3">
+            <%= f.label :status, "Status" %>
+          </div>
+          <div class="col-md-3">
+            <% if exam_user.init? %>
+              <%= f.select :status, ExamUser.statuses.keys.to_a,{}, 
+                class: "form-control" %>
+            <% elsif exam_user.starting? %>
+              <%= f.select :status, {"Starting" => :starting, "Finished" => :finished}, {}, class: "form-control" %>
+            <% else %>
+              <span class="label label-danger"><%= exam_user.status %></span>
+            <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <% unless exam_user.finished? %>
+            <%= f.submit t("button.submit"), class: "btn btn-primary" %>
+          <% end %>
         </div>
       <% end %>
     </div>

@@ -22,5 +22,9 @@ class ExamUser < ActiveRecord::Base
     end
   end
 
+  # def convert_time
+  #   self.start_date = self.start_date.to_datetime
+  #   self.end_date = self.end_date.to_datetime
+  # end
 end
 
