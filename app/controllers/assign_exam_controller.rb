@@ -31,7 +31,8 @@ class AssignExamController < ApplicationController
   def only_assign_one_exam user_ids, exam_id, group_id
     @check = true
     user_ids.each do |user_id|
-      @user_exam = ExamUser.where user_id: user_id, group_id: group_id, exam_id: exam_id
+      @user_exam = ExamUser.where user_id: user_id, group_id: group_id, 
+        exam_id: exam_id
       if @user_exam.size > 1
         user = User.find user_id
         @errors = "User #{user.email} has assigned this exam."
@@ -56,7 +57,7 @@ class AssignExamController < ApplicationController
   end
 
   def time_validate start_date, end_date
-    if start_date >= end_date || start_date < Time.now
+    if start_date >= end_date || start_date < Time.now.to_s
       @time_errors = "Has errors with time "
       return false
     end

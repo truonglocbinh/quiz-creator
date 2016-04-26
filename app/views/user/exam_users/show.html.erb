@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-md-8"><h3><%= @exam_user.exam.title %></h3></div>
+  <div class="col-md-3"><h3><%= @exam_user.exam.user.email %></h3></div>
+</div>
+<hr>
+<% if @exam_user.exam.description? %>
+  <h4><%= @exam_user.exam.description %></h4>
+  <hr>
+<% end %>
+<div class="row show-question">
+  <div class="col-md-10">
+    <% if @questions.size < 1 %>
+      <span class="label label-danger"><%= t "message.no_question" %></span>
+    <% else %>
+      <%= form_for [:user, @exam_user] do |f| %>
+        <ol>
+          <%= f.fields_for :results do |result| %>
+            <%= render "question", f: result %>
+          <% end %>
+        </ol>
+        <%= f.submit "Finish", class: "btn btn-danger custom-btn", 
+          id: "finish" %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="col-md-2">
+    <div class="timer">
+      <h4><%= t ".time_remain" %></h4>
+      <p id="clock" data-time-limit="<%= @duration %>"
+        data-time-start="<%= @time_start %>"
+        data-status="<%= @exam_user.status %>"></p>
+    </div>
+  </div>
+</div>

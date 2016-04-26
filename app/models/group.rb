@@ -4,6 +4,7 @@ class Group < ActiveRecord::Base
   has_many :users, through: :user_groups
   has_many :exam_groups
   has_many :exams, through: :exam_groups
+  has_many :exam_users
 
   ATTRIBUTES_PARAMS = [:name, :description, exam_ids:[]]
 

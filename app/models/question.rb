@@ -10,7 +10,7 @@ class Question < ActiveRecord::Base
 
   enum question_type: [:single_choice, :multiple_choice, :text]
   has_many :answers, dependent: :destroy
-
+  has_many :results
   belongs_to :exam
   belongs_to :subject
 
@@ -19,7 +19,6 @@ class Question < ActiveRecord::Base
   accepts_nested_attributes_for :answers,
                                 reject_if: lambda {|a| a[:content].blank? || a[:id]  == "0"},
                                 allow_destroy: true
-
   private
   def need_answer_correct
     unless self.text?

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160405113946) do
+ActiveRecord::Schema.define(version: 20160423135138) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "content"
@@ -30,6 +30,22 @@ ActiveRecord::Schema.define(version: 20160405113946) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "ckeditor_assets", force: :cascade do |t|
+    t.string   "data_file_name",               null: false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.integer  "assetable_id"
+    t.string   "assetable_type",    limit: 30
+    t.string   "type",              limit: 30
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable"
+  add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type"
 
   create_table "exam_groups", force: :cascade do |t|
     t.integer  "exam_id"
@@ -56,6 +72,8 @@ ActiveRecord::Schema.define(version: 20160405113946) do
     t.integer  "status",     default: 0
     t.datetime "start_date"
     t.datetime "end_date"
+    t.datetime "time_start"
+    t.datetime "time_end"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
@@ -106,6 +124,14 @@ ActiveRecord::Schema.define(version: 20160405113946) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+  end
+
+  create_table "results", force: :cascade do |t|
+    t.integer  "exam_user_id"
+    t.integer  "question_id"
+    t.integer  "answer_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "settings", force: :cascade do |t|

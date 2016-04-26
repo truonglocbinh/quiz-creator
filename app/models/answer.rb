@@ -5,5 +5,7 @@ class Answer < ActiveRecord::Base
     size: { in: 0..2.megabytes }
 
   belongs_to :question
+  has_many	:results
   validates :content, presence: true
+  scope :correct, -> {where correct: true}
 end

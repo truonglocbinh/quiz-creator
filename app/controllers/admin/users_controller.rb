@@ -1,9 +1,11 @@
 class Admin::UsersController < ApplicationController
+  add_breadcrumb "All Users", :admin_users_path
   def index
     @users = User.all.page(params[:page])
   end
 
   def show
+    add_breadcrumb "#{current_user.name}"
   end
 
   def new

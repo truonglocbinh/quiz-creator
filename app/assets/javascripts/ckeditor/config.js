@@ -30,6 +30,9 @@ CKEDITOR.editorConfig = function( config )
 
   // The location of a script that handles file uploads.
   config.filebrowserUploadUrl = "/ckeditor/attachment_files";
+  config.enterMode = CKEDITOR.ENTER_BR // pressing the ENTER KEY input <br/>
+  config.shiftEnterMode = CKEDITOR.ENTER_P; //pressing the SHIFT + ENTER KEYS input <p>
+  config.autoParagraph = false; // stops automatic insertion of <p> on focus
 
   config.allowedContent = true;
   config.language = 'en'

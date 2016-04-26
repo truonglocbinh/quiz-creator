@@ -5,7 +5,7 @@
   <div class="panel-body">
     <table class="table table-hover personal-task">
       <thead>
-        <tr>
+        <tr class="table-title">
           <td><%= t "exams.index.title" %></td>
           <td><%= t "exams.index.preview" %></td>
           <td><%= t "exams.index.share" %></td>
@@ -34,7 +34,7 @@
             </td>
             <td><span class="glyphicon glyphicon glyphicon-globe style-span" aria-hidden="true"></span></td>
             <td><span class="glyphicon glyphicon-align-justify style-span" aria-hidden="true"></span></td>
-            <td><%= exam.created_at %></td>
+            <td><%= exam.created_at.strftime "%H:%M:%S %d-%m-%Y" %></td>
           </tr>
         <% end %>
       </tbody>

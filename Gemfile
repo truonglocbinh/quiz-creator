@@ -28,6 +28,7 @@ gem "wicked_pdf"
 gem "wkhtmltopdf-binary"
 gem "momentjs-rails", ">= 2.9.0"
 gem "bootstrap3-datetimepicker-rails", "~> 4.17.37"
+gem "breadcrumbs_on_rails"
 
 group :development, :test do
   gem "byebug"

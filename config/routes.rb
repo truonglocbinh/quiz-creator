@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get "socials/infor"
-
+  mount Ckeditor::Engine => "/ckeditor"
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   root "static_page#home"
+  get "socials/infor"
   get "static_page/about"
   get "preview", to: "preview#show", as: :preview
   get "preview/main", to: "preview#main", as: :main
@@ -13,12 +13,19 @@ Rails.application.routes.draw do
   get "all_class", to: "my_class#all_class", as: :all_class
   get "assignexam", to: "assign_exam#show", as: :show_assign
   post "assign", to: "assign_exam#assign", as: :assign
+  get "show_class", to: "my_class#show_one_class", as: :show_class
+  get "exam/start_exam", to: "my_class#main", as: :start_exam
   resources :users, :notifications
   resources :groups do
     resources :user_groups
     resources :exam_groups
     resources :exam_users
   end
+  
+  namespace :user do 
+    resources :exam_users
+  end 
+
   resources :subjects do
     resources :questions
   end

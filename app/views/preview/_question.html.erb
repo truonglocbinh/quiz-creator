@@ -2,7 +2,7 @@
 <% i = 0  %>
 <div class="col-md-12">
   <div class="panel panel-green">
-    <div class="panel-heading"><li><strong><%= f.title %></strong></li></div>
+    <div class="panel-heading"><li><strong><%= raw f.title %></strong></li></div>
       <div class="panel-body">
         <div class="image-answer">
           <% unless f.avatar_file_name.nil? %>
@@ -16,7 +16,7 @@
               <%= alphabet[i] %>.
               <% i= i + 1 %>
               <input type="radio" name="radio1" value="<%= ans.id %>">
-              <label class="label-answer"><%= ans.content %></label>
+              <label class="label-answer"><%= raw ans.content %></label>
               <div class="image-answer">
                 <% unless ans.avatar_file_name.nil? %>
                   <%= image_tag ans.avatar.url, class: "image-exam" %>
@@ -30,7 +30,7 @@
               <%= alphabet[i] %>.
               <% i = i + 1 %>
               <input type="checkbox" name="preview" value="<%= ans.id %>">
-              <label class="label-answer"><%= ans.content %></label>
+              <label class="label-answer"><%= raw ans.content %></label>
               <div class="image-answer">
                 <% unless ans.avatar_file_name.nil? %>
                   <%= image_tag ans.avatar.url, class: "image-exam" %>

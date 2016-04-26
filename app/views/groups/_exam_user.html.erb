@@ -7,10 +7,15 @@
     <% elsif exam_user.starting? %>
       <span class="label label-primary"><%= exam_user.status %></span>
     <% else %>
-      <span class="label label-warning"><%= exam_user.status %></span>
+      <span class="label label-danger"><%= exam_user.status %></span>
     <% end %>
   </td>
-  <td></td>
+  <td>
+    <% if exam_user.finished? %>
+      <%= exam_user.score %>/
+      <%= exam_user.exam.questions.size %>
+    <% end %>
+  </td>
   <td>
     <% if exam_user.starting? %>
       <%= form_for Notification.new, remote: true do |f| %>

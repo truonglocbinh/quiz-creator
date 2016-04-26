@@ -17,7 +17,7 @@ $gray-darker: #222;
 /* universal */
 
 body{
-  padding-top: 60px;
+  padding-top: 100px;
   color: #353535;
   font-family: 'Open Sans', sans-serif;
   font-size:14px;
@@ -67,6 +67,20 @@ p {
   text-decoration: none;
   }
 }
+header .container {
+  padding-top: 14px;
+  height: 80px;
+  button {
+    padding: 5px 6px;
+  }
+  button a {
+    color: white;
+    text-decoration: none;
+     &:hover{
+      text-decoration: none;
+    }
+  }
+}
 
 
 /* footer */
@@ -96,6 +110,7 @@ footer {
 }
 .sign_up{
   margin-top: 20px;
+  width: 100%;
 }
 
 .alert-alert{
@@ -127,4 +142,31 @@ footer {
 .fields{
   margin-top: 10px;
   margin-bottom: 20px;
+}
+
+.custom-nav{
+  a {
+    color: white;
+  }
+  background-color: #3c8dbc;
+  border-color: #3c8dbc;
+  .dropdown-menu{
+  
+  }
+}
+.user-image {
+  float: left;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin-right: 10px;
+  margin-top: -2px;
+
+}
+.image-class{
+  height: 69.3125px !important;
+}
+
+.table-title{
+  font-weight: bold;
 }

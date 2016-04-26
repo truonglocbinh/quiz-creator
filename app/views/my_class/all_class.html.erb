@@ -18,7 +18,7 @@
       <% @my_classes.each_with_index do |val, index| %>
         <tr>
           <td style="width: 30px;"><i class="fa fa-graduation-cap"></i></td>
-          <td><%= val.name %></td>
+          <td><%= link_to val.name, show_class_path(class_id: val.id) %></td>
           <td><span class="label label-danger"><%= val.owner.email %></span></td>
         </tr>
       <% end %>

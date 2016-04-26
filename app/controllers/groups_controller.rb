@@ -1,19 +1,23 @@
 class GroupsController < ApplicationController
   before_action :load_group, only: [:delete, :edit, :show, :update, :destroy]
-
+  add_breadcrumb "All Groups", :groups_path
   def index
     @my_groups = current_user.groups.paginate page: params[:page], per_page: 10
   end
 
   def show
+    
+    add_breadcrumb "#{@group.name}", @group
     @exam_users = ExamUser.where group_id: @group.id
   end
 
   def new
+    add_breadcrumb "New"
     @group = Group.new
   end
 
   def create
+    add_breadcrumb "Create"
     @group = Group.new group_params
     @group.owner = current_user
     if @group.save
@@ -25,7 +29,7 @@ class GroupsController < ApplicationController
   end
 
   def edit
-
+    add_breadcrumb "Edit"
   end
 
   def update

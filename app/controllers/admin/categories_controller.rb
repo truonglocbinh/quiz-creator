@@ -1,11 +1,12 @@
 class Admin::CategoriesController < ApplicationController
   before_action :load_category, only: [:edit, :update,:show, :destroy]
-
+  add_breadcrumb "All Category", :admin_categories_path
   def index
     @categories = Category.all.paginate page: params[:page], per_page: 10
   end
 
   def new
+    add_breadcrumb "New"
     @category = Category.new
   end
 
@@ -20,7 +21,8 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def edit
-
+    add_breadcrumb "#{@category.title}", [:admin, @category]
+    add_breadcrumb "edit"
   end
 
   def update

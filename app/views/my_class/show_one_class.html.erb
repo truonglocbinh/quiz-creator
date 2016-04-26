@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-md-9">
+  	<div class="row panel panel-default">
+      <div class="col-md-10">
+        <h2><%= @class.name %></h2>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-danger" style="margin-top: 18px;">Out Group</button>
+      </div>
+  	</div>
+     <p ><%= @class.description %></p>
+    <hr>
+    <div class="row box box-primary">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <td>Exam</td>
+            <td>By</td>
+            <td>Time Range</td>
+            <td>Status</td>
+            <td>Result</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @exam_users.each do |exam_user| %>
+            <tr>
+              <td>
+                <% if exam_user.starting? %>
+                  <%= link_to exam_user.exam.title, start_exam_path(exam_user_id: exam_user.id) %>
+                <% else %>
+                  <%= exam_user.exam.title %>
+                <% end %>
+              </td>
+              <td><%= exam_user.exam.user.email %></td>
+              <td>
+                From: <%= exam_user.start_date %> To: <%= exam_user.end_date %>
+              </td>
+              <td><%= exam_user.status %></td>
+              <td></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

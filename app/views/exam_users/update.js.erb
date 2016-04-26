@@ -1,5 +1,4 @@
-$(".errors").html("<%= escape_javascript(render partial: 'shared/error_messages',
-  locals: {object: @exam_user}) %>")
+$(".errors").html("<%= escape_javascript(render partial: 'shared/error_messages',locals: {object: @exam_user}) %>")
 <% if @success.present? %>
-	$(".errors").html("#{@success}")
+	$(".errors").html("<%= @success %>")
 <% end %>

@@ -3,12 +3,15 @@ class QuestionsController < ApplicationController
   before_action :load_question, only: [:edit, :update, :destroy]
 
   def index
+
   end
 
   def show
   end
 
   def new
+    add_breadcrumb "#{@temp.title}", @temp
+    add_breadcrumb "New"
     @question = Question.new
     @question.answers.build
   end
@@ -28,6 +31,8 @@ class QuestionsController < ApplicationController
   end
 
   def edit
+    add_breadcrumb "#{@temp.title}", @temp
+    add_breadcrumb "Edit"
   end
 
   def update

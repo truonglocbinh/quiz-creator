@@ -1,6 +1,9 @@
 class AddUserToGroupController < ApplicationController
   def find_user
+
     @group = Group.find params[:group_id]
+    add_breadcrumb "#{@group.name}", @group
+    add_breadcrumb "Add User"
   end
 
   def result_of_find_user

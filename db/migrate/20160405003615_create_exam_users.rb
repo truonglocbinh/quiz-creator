@@ -7,6 +7,8 @@ class CreateExamUsers < ActiveRecord::Migration
       t.integer    :status, default: 0
       t.datetime   :start_date
       t.datetime   :end_date
+      t.datetime   :time_start
+      t.datetime   :time_end
       t.timestamps null: false
     end
   end

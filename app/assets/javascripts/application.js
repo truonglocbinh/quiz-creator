@@ -18,6 +18,7 @@
 //= require ckeditor/init
 //= require ckeditor/config.js
 //= require moment
+//= require time
 //= require bootstrap-datetimepicker
 //= require_tree .
 
@@ -26,12 +27,12 @@ $(document).on("page:change", function(){
         $(".alert").alert("close");
   });
   $(function() {
-    $('.datetimepicker').datetimepicker();
+    $('.datetimepicker').datetimepicker({format: 'YYYY-M-D, HH:mm'});
   });
 
   $(function() {
     $("body").delegate(".datetimepicker, #exam_user_start_date", "focusin", function(){
-        $(this).datetimepicker();
+        $(this).datetimepicker({format: 'YYYY-M-D, HH:mm'});
     });
   });
 

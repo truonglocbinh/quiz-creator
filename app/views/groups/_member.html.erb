@@ -3,25 +3,27 @@
     <div class="box-header with-border">
       <h3 class="box-title">Student</h3>
       <div class="box-tools pull-right">
-        <span class="label label-danger"><%= group.users.size %> Students</span>
+        <span class="label label-primary"><%= group.users.size %> Students</span>
       </div>
     </div>
     <div class="box-body no-padding">
       <ul class="users-list clearfix">
-        <% group.users.each do |user| %>
+        <% group.users.take(10).each do |user| %>
           <li>
             <% if user.avatar_file_name.nil? %>
-              <%= image_tag("noavatar", class: "img-responsive") %>
+              <%= image_tag "noavatar", class: "image-class" %>
             <% else %>
-              <%= image_tag user.avatar.url, class: "img-responsive" %>
+              <%= image_tag user.avatar.url, class: "image-class"%>
             <% end %>
-            <a class="users-list-name" href="#"><%= user.name %></a>
+            <a class="users-list-name" href="#" title= "<%= user.name %>"><%= user.name %></a>
           </li>
         <% end %>
       </ul>
     </div>
     <div class="box-footer text-center">
-      <a href="javascript:void(0)" class="uppercase">View All Users</a>
+      <%= link_to group_user_groups_path(@group) do %>
+        View All
+      <% end %>
     </div>
   </div>
 </div>

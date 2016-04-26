@@ -18,7 +18,7 @@
           <% i = 0  %>
           <div class="col-md-12" style="margin: 15px;">
             <div class="panel panel-green">
-              <div class="panel-heading"><li><strong><%= f.title %></strong></li></div>
+              <div class="panel-heading"><li><strong><%= f.title.html_safe %></strong></li></div>
                 <div class="panel-body">
                   <div class="image-answer">
                     <% unless f.avatar_file_name.nil? %>
@@ -30,7 +30,7 @@
                   <div class="radio" style="border-bottom:1px solid #ddd; padding: 5px;">
                     <%= alphabet[i] %>.
                     <% i= i + 1 %>
-                    <label class="label-answer"><%= ans.content %></label>
+                    <label class="label-answer"><%= raw ans.content %></label>
                     <div class="image-answer">
                       <% unless ans.avatar_file_name.nil? %>
                       <%= image_tag ans.avatar.url, class: "image-exam" %>

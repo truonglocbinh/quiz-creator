@@ -15,10 +15,17 @@
         <% flash.each do |message_type, message| %>
           <%= content_tag :div, message, class: "alert alert-#{message_type}" %>
         <% end %>
+        <% if current_user %>
+          <div class="row">
+            <ol class="breadcrumb">
+              <%= render_breadcrumbs :tag => :li, :separator => "" %>
+            </ol>
+          </div>
+        <% end %>
         <%= yield %>
     </div>
 
-    <div class="footer">
+    <div class="container-fluit">
       <%= render "layouts/footer" %>
     </div>
   </body>

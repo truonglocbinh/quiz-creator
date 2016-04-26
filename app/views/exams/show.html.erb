@@ -1,34 +1,42 @@
 <div class="row">
-  <div class="col-md-6" style="padding-left: 0;">
+  <div class="col-md-10" style="padding-left: 0;">
     <h3><%= @exam.title %></h3>
   </div>
-  <div class="col-md-6">
-    <ul class="nav nav-pills">
-      <li role="presentation" class="active">
-        <%= link_to edit_exam_path @exam do %>
-          <i class="fa fa-pencil fa-fw"></i>
-          <%= t("button.edit") %>
-        <% end %>
-      </li>
-      <li role="presentation" class="active">
-        <%= link_to exam_path(@exam, format: "pdf") do %>
-          <i class="fa fa-file-pdf-o fa-fw"></i>
-          <%= t("button.pdf") %>
-        <% end %>
-      </li>
-      <li role="presentation", class="active" >
-        <%= link_to new_exam_question_path(@exam) do %>
-          <i class="fa fa-plus"></i>
-          <%= t("button.new_question") %>
-        <% end %>
-      </li>
-      <li role="presentation", class="active">
-        <%= link_to exam_setting_path(@exam) do %>
-          <i class="fa fa-cog"></i>
-          <%= t "exams.show.setting" %>
-        <% end %>
-      </li>
-    </ul>
+  <div class="col-md-2">
+    <div class="btn-group">
+        <button type="button" class="btn btn-success">Config</button>
+        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+          <span class="caret"></span>
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li>
+             <%= link_to edit_exam_path @exam do %>
+              <i class="fa fa-pencil fa-fw"></i>
+              <%= t("button.edit") %>
+            <% end %>
+          </li>
+          <li class="divider"></li>
+          <li>
+             <%= link_to exam_path(@exam, format: "pdf") do %>
+              <i class="fa fa-file-pdf-o fa-fw"></i>
+              <%= t("button.pdf") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_exam_question_path(@exam) do %>
+              <i class="fa fa-plus"></i>
+              <%= t("button.new_question") %>
+            <% end %>
+          </li>
+          <li>
+              <%= link_to exam_setting_path(@exam) do %>
+                <i class="fa fa-cog"></i>
+                <%= t "exams.show.setting" %>
+              <% end %>
+          </li>
+        </ul>
+    </div>
   </div>
 </div>
 <hr>
@@ -69,8 +77,10 @@
                   <i class="fa fa-pencil fa-fw"></i>
                   <%= t("button.edit") %>
                 <% end %>
-                <%= link_to exam_question_path(@exam, question), method: :delete,
-                  data: {confirm: "Are you sure ?"}, class: "btn btn-danger" do %>
+                <%= link_to exam_question_path(@exam, question), 
+                  method: :delete,
+                  data: {confirm: "Are you sure ?"}, 
+                  class: "btn btn-danger" do %>
                   <i class="fa fa-trash-o fa-fw"></i>
                   <%= t("button.delete") %>
                 <% end %>

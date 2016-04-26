@@ -116,36 +116,48 @@
             </ul>
             <!-- /.dropdown-alerts -->
           </li>
-          <li class="dropdown">
+          <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-user fa-fw"></i>
-              <b class="caret"></b>
+              <%= image_tag current_user.avatar.url ? 
+                current_user.avatar.url : "no_avatar", size: "160x160", 
+                class: "user-image", alt: "User Image" %>
+              <span class="hidden-xs">Alexander Pierce</span>
             </a>
             <ul class="dropdown-menu">
               <li>
                 <%= link_to(profile_path)  do %>
-                  <i class="fa fa-user fa-fw"></i>
-                  Profile
+                <i class="fa fa-user fa-fw"></i>
+                Profile
                 <% end %>
               </li>
               <li>
                 <%= link_to(edit_user_registration_path) do %>
-                  <i class="fa fa-gear fa-fw"></i>
-                  Setting
+                <i class="fa fa-gear fa-fw"></i>
+                Setting
                 <% end %>
               </li>
               <li class="divider"></li>
               <li>
                 <%= link_to(destroy_user_session_path,
-                  method: "delete") do %>
-                  <i class="fa fa-sign-out fa-fw"></i>
-                  <%= t "devise.log_out" %>
+                method: "delete") do %>
+                <i class="fa fa-sign-out fa-fw"></i>
+                <%= t "devise.log_out" %>
                 <% end %>
               </li>
             </ul>
           </li>
         <% else %>
-          <li><%= link_to t("devise.log_in"), new_user_session_path %></li>
+          <li>
+            <button type="button" class="btn btn-danger">
+              <%= link_to t("devise.sign_up"), new_user_registration_path %>
+            </button>
+            <button type="button" class="btn btn-danger">
+              <%= link_to  new_user_session_path  do %>
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <%= t "devise.log_in" %>
+              <% end %>
+            </button>
+          </li>
         <% end %>
       </ul>
     </nav>

@@ -2,6 +2,8 @@ class ExamGroupsController < ApplicationController
   before_action :load_group, only: [:index]
 
   def index
+  	add_breadcrumb "#{@group.name}", @group
+  	add_breadcrumb "Exams"
     @exams = @group.exams
   end
 

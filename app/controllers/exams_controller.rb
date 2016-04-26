@@ -1,10 +1,12 @@
 class ExamsController < ApplicationController
   before_action :load_exam, except: [:index, :create, :new]
+  add_breadcrumb "My Exams", :exams_path
   def index
     @exams = current_user.exams.order("created_at DESC").paginate page: params[:page], per_page: 10
   end
 
   def show
+    add_breadcrumb "#{@exam.title}", @exam
     @questions = @exam.questions
     respond_to do |format|
       format.html
@@ -18,6 +20,7 @@ class ExamsController < ApplicationController
   end
 
   def new
+    add_breadcrumb "New"
     @exam = Exam.new
   end
 
@@ -31,6 +34,8 @@ class ExamsController < ApplicationController
   end
 
   def edit
+    add_breadcrumb "#{@exam.title}", @exam
+    add_breadcrumb "Edit"
   end
 
   def update

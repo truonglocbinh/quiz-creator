@@ -10,8 +10,8 @@
       <span class="label label-danger"><%= t "message.no_question" %></span>
     <% else %>
       <ol>
-        <% @questions.each do |question| %>
-          <%= render "question", f: question %>
+        <% @questions.each_with_index do |question, index| %>
+          <%= render "question", f: question, index: index %>
         <% end %>
       </ol>
     <% end %>

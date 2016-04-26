@@ -6,7 +6,6 @@ class Api::UsersController < ApplicationController
     @users = @users.page(params[:my_page])
     respond_to do |format|
       format.html {render partial: "index", locals: {users: @users}}
-      format.js {}
     end
   end
 end

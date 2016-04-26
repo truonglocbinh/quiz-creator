@@ -28,7 +28,7 @@
         <li>
           <%= link_to show_assign_path(group_id: @group.id) do %>
             Assign
-            <span class="pull-right badge bg-red">842</span>
+            <span class="pull-right badge bg-red"><%= group.exam_users.size %></span>
           <% end %>
         </li>
       </ul>
