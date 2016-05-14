@@ -1,6 +1,8 @@
 class NotificationsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @notices = Notification.where(to: current_user.id).order "created_at DESC"
+    add_breadcrumb "Notification"
   end
 
   def create

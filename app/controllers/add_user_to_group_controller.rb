@@ -1,6 +1,6 @@
 class AddUserToGroupController < ApplicationController
+  before_action :authenticate_user!
   def find_user
-
     @group = Group.find params[:group_id]
     add_breadcrumb "#{@group.name}", @group
     add_breadcrumb "Add User"

@@ -2,7 +2,7 @@ class Question < ActiveRecord::Base
   extend Kaminari
   ATTRIBUTES_PARAMS = [:title, :feedback, :question_type, :avatar,:score,
     :exam_id, answers_attributes: [:id, :content, :correct, :avatar, :_destroy]]
-  # before_validation :need_answer_correct
+  before_validation :need_answer_correct
   has_attached_file :avatar
   validates_attachment :avatar,
     content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] },

@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :load_exam_or_subject, only: [:new, :create, :edit, :update]
   before_action :load_question, only: [:edit, :update, :destroy]
 

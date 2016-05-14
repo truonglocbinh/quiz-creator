@@ -1,0 +1,28 @@
+  <td><%= link_to exam_user.user.email, group_exam_user_path(exam_user.group,exam_user), remote: true %></td>
+  <td><%= exam_user.exam.title %></td>
+  <td >
+    <% if exam_user.init? %>
+      <span class="label label-default"><%= exam_user.status %></span>
+    <% elsif exam_user.starting? %>
+      <span class="label label-primary"><%= exam_user.status %></span>
+    <% else %>
+      <span class="label label-danger"><%= exam_user.status %></span>
+    <% end %>
+  </td>
+  <td>
+    <% if exam_user.finished? %>
+      <%= exam_user.score %>/
+      <%= exam_user.exam.questions.size %>
+    <% end %>
+  </td>
+  <td>
+    <% if exam_user.starting? %>
+      <%= form_for Notification.new, remote: true do |f| %>
+        <%= f.hidden_field :from, value: current_user.id %>
+        <%= f.hidden_field :to, value: exam_user.user.id %>
+        <%= f.hidden_field :no_type, value: 1 %>
+        <%= f.hidden_field :content, value: "#{current_user.email} want you take #{exam_user.exam.title} now !" %>
+        <%= f.submit "Remine", class: "btn btn-danger" %>
+      <% end %>
+    <% end %>
+  </td>

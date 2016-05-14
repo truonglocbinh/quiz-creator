@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :authenticate_onwer, except: [:index, :new]
   before_action :load_group, only: [:delete, :edit, :show, :update, :destroy]
   add_breadcrumb "All Groups", :groups_path
   def index
@@ -6,7 +8,6 @@ class GroupsController < ApplicationController
   end
 
   def show
-    
     add_breadcrumb "#{@group.name}", @group
     @exam_users = ExamUser.where group_id: @group.id
   end
@@ -57,5 +58,13 @@ class GroupsController < ApplicationController
 
   def group_params
     params.require(:group).permit Group::ATTRIBUTES_PARAMS
+  end
+
+  def authenticate_onwer
+    @group = Group.find params[:id]
+    unless @group.owner == current_user
+      flash[:danger] = "Sorry you can access this resources"
+      redirect_to root_url
+    end
   end
 end

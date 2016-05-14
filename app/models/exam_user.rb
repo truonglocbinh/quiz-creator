@@ -5,7 +5,7 @@ class ExamUser < ActiveRecord::Base
   has_many   :results
   has_many   :questions, through: :results
   has_many   :answers, through: :results
-  validate :start_date_must_less_than_end_date, on: :update
+  validate :start_date_must_less_than_end_date, if: "status != 2", on: :create
 
   enum status: [:init, :starting, :finished]
 
@@ -22,14 +22,16 @@ class ExamUser < ActiveRecord::Base
 
   def score
     score = 0
+    total = 0
     self.exam.questions.each do |question|
       array_1 = question.answers.correct.pluck(:id)
-      array_2 = Result.where(question: question).pluck(:answer_id)
+      array_2 = results.where(question: question).pluck(:answer_id)
       if array_1 == array_2
+        total = total + question.score
         score = score + 1
       end
     end
-    score
+    [score, total]
   end
 
   private

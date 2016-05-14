@@ -13,10 +13,10 @@
     <div class="row box box-primary">
       <table class="table table-hover">
         <thead>
-          <tr>
+          <tr style="font-weight: bold;">
             <td>Exam</td>
             <td>By</td>
-            <td>Time Range</td>
+            <td>Time Exist</td>
             <td>Status</td>
             <td>Result</td>
           </tr>
@@ -25,7 +25,7 @@
           <% @exam_users.each do |exam_user| %>
             <tr>
               <td>
-                <% if exam_user.starting? %>
+                <% if exam_user.starting? && exam_user.start_date <= Time.now && exam_user.end_date > Time.now %>
                   <%= link_to exam_user.exam.title, start_exam_path(exam_user_id: exam_user.id) %>
                 <% else %>
                   <%= exam_user.exam.title %>
@@ -33,10 +33,24 @@
               </td>
               <td><%= exam_user.exam.user.email %></td>
               <td>
-                From: <%= exam_user.start_date %> To: <%= exam_user.end_date %>
+                From: <%= exam_user.start_date.strftime "%H:%M:%S %d-%m-%Y" %> 
+                To: <%= exam_user.end_date.strftime "%H:%M:%S %d-%m-%Y" %>
               </td>
-              <td><%= exam_user.status %></td>
-              <td></td>
+              <td>
+                <% if exam_user.init? %>
+                  <span class="label label-default"><%= exam_user.status %></span>
+                <% elsif exam_user.starting? %>
+                  <span class="label label-primary"><%= exam_user.status %></span>
+                <% else %>
+                  <span class="label label-danger"><%= exam_user.status %></span>
+                <% end %>
+              </td>
+              <td>
+                <% if exam_user.finished? %>
+                  <%= exam_user.score[0] %>/
+                  <%= exam_user.exam.questions.size %>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>

@@ -1,4 +1,6 @@
 class ExamsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :authenticate_onwer, except: [:index, :new]
   before_action :load_exam, except: [:index, :create, :new]
   add_breadcrumb "My Exams", :exams_path
   def index
@@ -54,5 +56,13 @@ class ExamsController < ApplicationController
 
   def exam_params
     params.require(:exam).permit Exam::ATTRIBUTES_PARAMS
+  end
+
+  def authenticate_onwer
+    @exam = Exam.find_by_id params[:id]
+    unless @exam.user == current_user
+      flash[:danger] = "Sorry you can access this resources"
+      redirect_to root_url
+    end
   end
 end

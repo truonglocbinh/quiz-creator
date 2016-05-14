@@ -1,4 +1,6 @@
 $(".errors").html("<%= escape_javascript(render partial: 'shared/error_messages',locals: {object: @exam_user}) %>")
 <% if @success.present? %>
-	$(".errors").html("<%= @success %>")
+  $(".errors").html("<%= @success %>")
+  $("#exam-user-<%= @exam_user.id %>").
+  	html("<%= escape_javascript(render partial: 'exam_users/status',locals: {exam_user: @exam_user}) %>")
 <% end %>

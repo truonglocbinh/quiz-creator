@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_attached_file :avatar
+  has_attached_file :avatar, :default_url => "/assets/no_avatar.png"
   validates_attachment :avatar,
     content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] },
     size: { in: 0..2.megabytes }
@@ -14,8 +14,10 @@ class User < ActiveRecord::Base
   has_many :groups, dependent: :destroy
   has_many :user_groups, dependent: :destroy
   has_many :joined_groups, through: :user_groups, source: :group
+  has_many :notifications, class_name: Notification.name, foreign_key: "to"
   ATTRIBUTES_PARAMS = [:email, :password, :password_confirmation, :name]
-  ADMIN_PARAMS = [:email, :password, :password_confirmation, :role]
+  ADMIN_PARAMS = [:name, :email, :password, :password_confirmation, :role]
+
   def self.filter_user role, email
     if role == "all"
       @users = User.where("email LIKE ?", "%#{email}%")

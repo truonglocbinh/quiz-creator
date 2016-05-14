@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="box box-danger">
+  <div class="box box-danger" style="border-left: 1px solid #EEEEEE; border-right: 1px solid #EEEEEE;">
     <div class="box-header with-border">
       <h3 class="box-title">Student</h3>
       <div class="box-tools pull-right">
@@ -8,7 +8,7 @@
     </div>
     <div class="box-body no-padding">
       <ul class="users-list clearfix">
-        <% group.users.take(10).each do |user| %>
+        <% group.users.take(7).each do |user| %>
           <li>
             <% if user.avatar_file_name.nil? %>
               <%= image_tag "noavatar", class: "image-class" %>

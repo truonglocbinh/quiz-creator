@@ -1,4 +1,6 @@
 class Admin::CategoriesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :is_admin?
   before_action :load_category, only: [:edit, :update,:show, :destroy]
   add_breadcrumb "All Category", :admin_categories_path
   def index
@@ -50,5 +52,12 @@ class Admin::CategoriesController < ApplicationController
 
   def category_params
     params.require(:category).permit Category::ATTRIBUTES_PARAMS
+  end
+
+  def is_admin?
+    unless current_user.admin?
+      flash[:danger] = "You can not access it !"
+      redirect_to root_url
+    end
   end
 end

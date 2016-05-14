@@ -1,4 +1,5 @@
 class ExamGroupsController < ApplicationController
+  before_action :authenticate_user!
   before_action :load_group, only: [:index]
 
   def index

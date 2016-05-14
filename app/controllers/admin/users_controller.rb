@@ -1,4 +1,6 @@
 class Admin::UsersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :is_admin?
   add_breadcrumb "All Users", :admin_users_path
   def index
     @users = User.all.page(params[:page])
@@ -30,5 +32,12 @@ class Admin::UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit User::ADMIN_PARAMS
+  end
+
+  def is_admin?
+    unless current_user.admin?
+      flash[:danger] = "You can not access it !"
+      redirect_to root_url
+    end
   end
 end

@@ -1,18 +1,27 @@
 <% provide :title, t("title.group") %>
-<div class="panel panel-primary">
+<div class="panel panel-primary ml">
   <div class="panel-heading" style="font-size:large">
     <%= t ".my_group" %>
   </div>
   <div class="panel-body">
     <table class="table table-striped">
-      <tr class="table-title">
-        <td><%= t ".name" %></td>
-      </tr>
-      <% @my_groups.each do |group| %>
-        <tr>
-          <td><%= link_to group.name, group_path(group) %></td>
+      <thead>
+        <tr class="table-title">
+          <td><%= t ".name" %></td>
         </tr>
-      <% end %>
+        <tr>
+          <td>
+            <input type="text" class="form-control" id="filter-owner-group"></input>
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @my_groups.each do |group| %>
+          <tr>
+            <td><%= link_to group.name, group_path(group) %></td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
   </div>
 </div>

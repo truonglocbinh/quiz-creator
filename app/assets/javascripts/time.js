@@ -3,7 +3,9 @@ $(document).on("ready page:load",function(){
   var status = clock.attr("data-status")
   var time_limit = clock.attr("data-time-limit")
   var time_start = clock.attr("data-time-start")
-  var time = time_limit * 60
+  var time_now = clock.attr("data-time-now")
+  var time = time_limit * 60 - (time_now - time_start)
+  console.log(time)
   if(time_limit > 0){
     setInterval(function(){
     if (time > 0 && status != "init" && status != "finished"){

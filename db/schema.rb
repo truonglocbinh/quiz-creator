@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160423135138) do
+ActiveRecord::Schema.define(version: 20160508071731) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "content"
@@ -107,8 +107,9 @@ ActiveRecord::Schema.define(version: 20160423135138) do
     t.integer  "to"
     t.text     "content"
     t.integer  "no_type",    default: 0
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "seen",       default: false
   end
 
   create_table "questions", force: :cascade do |t|

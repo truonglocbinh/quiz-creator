@@ -42,6 +42,24 @@
           <% end %>
         <% end %>
     </div>
+    <div class="result">
+      <% if f.object.exam_user.finished? %>
+        <% if f.object.answer == nil  %>
+          <span class="label label-info">No choice</span>
+        <% else %>
+          <% if f.object.answer.correct %>
+            <span class="label label-primary">Correct</span>
+          <% else %>
+            <span class="label label-danger">Wrong</span>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="feedback">
+      <% if f.object.question.feedback? %>
+        <%= f.object.question.feedback %>
+      <% end %>
+    </div>
    </div>
   </div>
 </div>

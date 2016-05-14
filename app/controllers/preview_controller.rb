@@ -1,4 +1,5 @@
 class PreviewController < ApplicationController
+  before_action :authenticate_user!
   before_action :load_object, only: [:show, :main]
   def show
   end

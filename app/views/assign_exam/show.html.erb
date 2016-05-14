@@ -1,52 +1,62 @@
-<h1>Assign Exam</h1>
-<p>
+<h3 class="ml" style="margin-bottom: 20px;">Assign Exam</h3>
+<p style="color: red;">
   <% unless @errors.nil? %>
     <%= @errors %>
   <% end %>
 </p>
-<p>
+<p style="color: red;">
   <% unless @time_errors.nil? %>
     <%= @time_errors %>
   <% end %>
 </p>
-<div class="row">
+<div class="row panel panel-default" style="padding: 3%;">
   <%= form_for :assign , url: assign_path, method: :post do |f| %>
     <%= f.hidden_field :group_id , value: @group.id %>
-    <div class="row">
-      <div class="col-md-2"><%= f.label :exam, "Exam" %></div>
-      <div class="col-md-6">
-        <%= f.select :exam_id, @exams.collect{|u| [u.title, u.id]},{}, class: "form-control" %>
+    <div class="row" style="margin: 20px;">
+      <div class="col-md-2 label-assign"><%= f.label :exam, "Exam" %></div>
+      <div class="col-md-6" style="margin-left: -9.6%;">
+        <%= f.select :exam_id, @exams.collect{|u| [u.title, u.id]},{}, class: "form-control custom-select" %>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-3">
+    <div class="row" style="margin-left: 20px;">
+      <div class="col-md-5">
         <div class="row">
           <div class="form-group">
-            <%= label_tag :start_date, 'Start at' %>
-            <div class="input-group date">
-              <%= text_field_tag :start_date, nil, required: true,
-                class: 'form-control datetimepicker'%>
-              <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+            <div class="col-md-2 label-assign"><%= label_tag :start_date, 'Start' %> </div>
+            <div class="col-md-10">
+              <div class="input-group date">
+                <%= text_field_tag :start_date, nil, required: true,
+                  class: 'form-control datetimepicker'%>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-3 col-md-push-1">
+      <div class="col-md-5">
         <div class="row">
          <div class="form-group">
-            <%= label_tag :end_date, 'End at' %>
-            <div class="input-group date">
-              <%= text_field_tag :end_date, nil, required: true,
-                class: 'form-control datetimepicker'%>
-              <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+            <div class="col-md-2 label-assign"><%= label_tag :end_date, 'End' %></div>
+            <div class="col-md-10">
+              <div class="input-group date">
+                <%= text_field_tag :end_date, nil, required: true,
+                  class: 'form-control datetimepicker'%>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="row">
-      <h6>Student</h6>
-      <div class="row">
+    <div class="row" style="margin: 20px;">
+      <div class="col-md-2 label-assign"><%= f.label :status, "Status" %></div>
+      <div class="col-md-6" style="margin-left: -9.6%;">
+        <%= f.select :status, ExamUser.statuses.to_a.map { |w| [w[0].humanize, w[0]] },{}, class: "form-control custom-select" %>
+      </div>
+    </div>
+    <div class="row" style="padding-left: 4.1%; padding-top: 4%;">
+      <span class="label label-danger">Student</span>
+      <div class="row" style="margin-top: 2%;">
         <ol>
           <% @students.each do |student| %>
             <li>
@@ -57,7 +67,7 @@
         </ol>
       </div>
     </div>
-    <div class="row">
+    <div class="row" style="padding-left: 48%; margin-top: 16px;">
       <%= f.submit t("button.submit"), class: "btn btn-primary" %>
     </div>
   <% end %>

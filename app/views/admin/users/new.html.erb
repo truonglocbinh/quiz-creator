@@ -1,6 +1,13 @@
 <% provide :title, t("title.sign_up") %>
-<%= form_for [:admin, @user] do |f| %>
+<%= form_for [:admin, @user], class: "panel panel-default" do |f| %>
   <%= render "shared/error_messages", object: f.object %>
+  <div class="col-md-6 col-md-offset-3">
+    <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, autofocus: true, required: true, class: "form-control" %>
+    </div>
+  </div>
+
   <div class="col-md-6 col-md-offset-3">
     <div class="field">
       <%= f.label :email %><br />

@@ -1,9 +1,11 @@
 class ExamUsersController < ApplicationController
+  before_action :authenticate_user!
   before_action :load_group, only: [:show, :edit]
 
   def show
     @exam_user = ExamUser.find params[:id]
     respond_to do |format|
+      format.html {}
       format.js {}
     end
   end

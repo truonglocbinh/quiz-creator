@@ -1,7 +1,14 @@
-<tr>
+<tr id="exam-user-<%= exam_user.id %>">
   <td><%= link_to exam_user.user.email, group_exam_user_path(exam_user.group,exam_user), remote: true %></td>
-  <td><%= exam_user.exam.title %></td>
   <td>
+    <% if exam_user.finished? %>
+      <%= link_to exam_user.exam.title, user_exam_user_path(exam_user) %>
+    <% else %>
+      <%= exam_user.exam_user.title %>
+    <% end %>
+    
+  </td>
+  <td >
     <% if exam_user.init? %>
       <span class="label label-default"><%= exam_user.status %></span>
     <% elsif exam_user.starting? %>
@@ -12,7 +19,7 @@
   </td>
   <td>
     <% if exam_user.finished? %>
-      <%= exam_user.score %>/
+      <%= exam_user.score[0] %>/
       <%= exam_user.exam.questions.size %>
     <% end %>
   </td>

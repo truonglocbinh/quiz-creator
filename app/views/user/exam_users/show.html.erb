@@ -7,6 +7,12 @@
   <h4><%= @exam_user.exam.description %></h4>
   <hr>
 <% end %>
+<% if @exam_user.finished? %>
+  <h4><strong>Status: </strong><span class="label label-danger">Finished</span></h4>
+  <h4><strong>Start at :</strong> <%= @exam_user.time_start.strftime "%H:%M:%S /%d-%m-%Y" %></h4>
+  <h4><strong>End at : </strong><%= @exam_user.time_end.strftime "%H:%M:%S /%d-%m-%Y" %></h4>
+  <h4><strong>Time : </strong><%= convert_time @exam_user, @duration %></h4>
+<% end %>
 <div class="row show-question">
   <div class="col-md-10">
     <% if @questions.size < 1 %>
@@ -18,17 +24,22 @@
             <%= render "question", f: result %>
           <% end %>
         </ol>
-        <%= f.submit "Finish", class: "btn btn-danger custom-btn", 
-          id: "finish" %>
+        <% unless @exam_user.finished? %>
+          <%= f.submit "Finish", class: "btn btn-danger custom-btn", 
+            id: "finish" %>
+        <% end %>
       <% end %>
     <% end %>
   </div>
-  <div class="col-md-2">
-    <div class="timer">
-      <h4><%= t ".time_remain" %></h4>
-      <p id="clock" data-time-limit="<%= @duration %>"
-        data-time-start="<%= @time_start %>"
-        data-status="<%= @exam_user.status %>"></p>
+  <% unless @exam_user.finished? %>
+    <div class="col-md-2">
+      <div class="timer">
+        <h4><%= t ".time_remain" %></h4>
+        <p id="clock" data-time-limit="<%= @duration %>"
+          data-time-start="<%= @time_start.to_i %>"
+          data-time-now = "<%= Time.now.to_i %>"
+          data-status="<%= @exam_user.status %>"></p>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>

@@ -41,7 +41,10 @@ Rails.application.routes.draw do
     resources :users
     resources :categories
     resources :exams
-    resources :groups
+    resources :notifications
+    resources :groups do 
+      get "my_owner_group", on: :collection
+    end
     resources :exam_users
   end
 end

@@ -25,4 +25,13 @@ module ApplicationHelper
     link_to lab, "#", onclick: "add_fields(this, \"#{assoc}\",
       \"#{escape_javascript(fields)}\")", remote: true
   end
+
+  def convert_time exam_user, duration
+    if exam_user.time_end.to_i - exam_user.time_start.to_i < duration * 60
+      time = exam_user.time_end.to_i - exam_user.time_start.to_i
+    else
+      time = duration * 60
+    end
+    Time.at(time).utc.strftime "%H:%M:%S"
+  end
 end

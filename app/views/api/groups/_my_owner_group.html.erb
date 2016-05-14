@@ -1,0 +1,5 @@
+<% groups.each do |group| %>
+  <tr>
+    <td><%= link_to group.name, group_path(group) %></td>
+  </tr>
+<% end %>

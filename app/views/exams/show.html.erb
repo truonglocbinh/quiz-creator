@@ -59,14 +59,16 @@
       <table id="example2" class="table table-bordered table-hover">
         <thead>
           <tr>
+            <th>Stt</th>
             <th><%= t ".title" %></th>
             <th><%= t "exams.show.score" %></th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-         <% @questions.each do |question| %>
+         <% @questions.each_with_index do |question, index| %>
             <tr>
+              <td><%= index + 1 %></td>
               <td>
                 <%= sanitize question.title.html_safe.truncate(100) %>
               </td>

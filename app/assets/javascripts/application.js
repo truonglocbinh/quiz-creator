@@ -14,11 +14,11 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
-//= require fancybox
 //= require ckeditor/init
 //= require ckeditor/config.js
 //= require moment
 //= require time
+//= require real_time
 //= require bootstrap-datetimepicker
 //= require_tree .
 
@@ -32,7 +32,7 @@ $(document).on("page:change", function(){
 
   $(function() {
     $("body").delegate(".datetimepicker, #exam_user_start_date", "focusin", function(){
-        $(this).datetimepicker({format: 'YYYY-M-D, HH:mm'});
+        $(this).datetimepicker({format: 'YYYY-MM-DD, HH:mm'});
     });
   });
 
@@ -117,6 +117,19 @@ $(document).on("page:change", function(){
     var class_name = $(this).val();
     $.ajax({
     url:  "/api/groups",
+    type: "GET",
+    data: {name: class_name},
+    success: function(data){
+      $("tbody").html("");
+      $("tbody").html(data);
+    }
+    })
+  });
+
+  $(document).on("input", "#filter-owner-group", function(){
+    var class_name = $(this).val();
+    $.ajax({
+    url:  "/api/groups/my_owner_group",
     type: "GET",
     data: {name: class_name},
     success: function(data){

@@ -8,7 +8,7 @@
     </div>
     <div class="modal-body">
       <%= form_for exam_user, url: group_exam_user_path(group, exam_user), remote: true do |f| %>
-        <div class="errors"></div>
+        <div class="errors" style="color: red; margin-left: -15px;"></div>
         <div class="row">
             <div class="col-md-6">
               <div class="row">
@@ -50,6 +50,20 @@
             <% end %>
           </div>
         </div>
+        <% if exam_user.finished? %>
+          <div class="row">
+            <div class="col-md-3">Pass: </div>
+            <div class="col-md-3"><%= exam_user.score[0] %></div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">Failed</div>
+            <div class="col-md-3"><%= exam_user.exam.questions.size - exam_user.score[0] %></div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">Score:</div>
+            <div class="col-md-3"><%= exam_user.score[1] %></div>
+          </div>
+        <% end %>
         <div class="row">
           <% unless exam_user.finished? %>
             <%= f.submit t("button.submit"), class: "btn btn-primary" %>
