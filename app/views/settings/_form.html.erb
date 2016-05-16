@@ -33,6 +33,12 @@
         <%= f.check_box :send_email %>
       </div>
     </div>
+    <div class="form-group">
+      <%= f.label :pass, "Score to pass exam", class: "col-md-4" %>
+      <div class="col-md-8">
+        <%= f.number_field :pass, min: 1, class: "form-control time-limit"%>
+      </div>
+    </div>
     <hr>
     <%= f.submit t("button.submit"), class: "btn btn-primary" %>
   <% end %>

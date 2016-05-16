@@ -28,7 +28,7 @@
                 <% if exam_user.starting? && exam_user.start_date <= Time.now && exam_user.end_date > Time.now %>
                   <%= link_to exam_user.exam.title, start_exam_path(exam_user_id: exam_user.id) %>
                 <% else %>
-                  <%= exam_user.exam.title %>
+                  <%= link_to exam_user.exam.title, user_results_path(id: exam_user.id) %>
                 <% end %>
               </td>
               <td><%= exam_user.exam.user.email %></td>

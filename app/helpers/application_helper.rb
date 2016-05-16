@@ -34,4 +34,26 @@ module ApplicationHelper
     end
     Time.at(time).utc.strftime "%H:%M:%S"
   end
+
+  def is_checked? ans_id, exam_user
+    answer_results_ids = exam_user.results.pluck(:answer_id)
+    if answer_results_ids.include? ans_id
+      "checked"
+    end
+  end
+
+  def correct? question, exam_user
+    ans_correct_ids = question.answers.correct.pluck(:id)
+    exam_user_ans_correct_ids = exam_user.results.where(question_id: question.id).pluck(:answer_id)
+    if ans_correct_ids == exam_user_ans_correct_ids
+      return true
+    end
+  end
+
+  def no_choice question, exam_user
+    ans_ids = exam_user.results.where(question: question).pluck(:answer_id)
+    if ans_ids[0].nil?
+      true
+    end
+  end
 end

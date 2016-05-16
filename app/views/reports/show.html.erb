@@ -1,0 +1,29 @@
+<h1 class="ml">Report</h1>
+<div class="select-group row" style="margin-left: -2.4%;">
+  <%= form_for :exam, remote: true, url: get_report_path do |f| %>
+   <div class="col-md-6">
+      <%= f.hidden_field :group_id, value: @group.id %>
+      <%= f.select(:id, @exams.collect {|u| [u.title, u.id]}, {:prompt => 'Select'}, {:class => "form-control custom-select"}) %>
+   </div>
+   <div class="col-md-2">
+     <%= f.submit "Create", class: "btn btn-primary custom-primary" %>
+   </div>
+  <% end %>
+</div>
+<div class="row report panel panel-default" style="margin-top: 20px;">
+  <table class="table">
+    <thead>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Start at</th>
+      <th>End at</th>
+      <th>Time</th>
+      <th>Question pass</th>
+      <th>Question Failed</th>
+      <th>Score</th>
+    </thead>
+    <tbody>
+      
+    </tbody>
+  </table>
+</div>

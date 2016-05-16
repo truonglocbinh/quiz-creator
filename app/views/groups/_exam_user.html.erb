@@ -2,9 +2,9 @@
   <td><%= link_to exam_user.user.email, group_exam_user_path(exam_user.group,exam_user), remote: true %></td>
   <td>
     <% if exam_user.finished? %>
-      <%= link_to exam_user.exam.title, user_exam_user_path(exam_user) %>
+      <%= link_to exam_user.exam.title, user_results_path(id: exam_user.id) %>
     <% else %>
-      <%= exam_user.exam_user.title %>
+      <%= exam_user.exam.title %>
     <% end %>
     
   </td>

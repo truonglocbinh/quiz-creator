@@ -1,0 +1,17 @@
+<tr>
+  <td><%= exam_user.user.name %></td>
+  <td><%= exam_user.user.email %></td>
+  <td><%= exam_user.time_start.strftime "%H:%M:%S %d-%m-%Y" if exam_user.time_start %></td>
+  <td><%= exam_user.time_end.strftime "%H:%M:%S %d-%m-%Y" if exam_user.time_end %></td>
+  <td><%= convert_time exam_user, exam_user.exam.setting.time_limit %></td>
+  <td><%= exam_user.score[0] %></td>
+  <td><%= exam_user.exam.questions.size - exam_user.score[0] %></td>
+  <td><%= exam_user.score[1]%></td>
+  <td>
+    <% if exam_user.score[1] >= exam_user.exam.setting.pass %>
+      <span class="label label-primary">Pass</span>
+    <% else %>
+      <span class="label label-default">Failed</span>
+    <% end %>
+  </td>
+</tr>

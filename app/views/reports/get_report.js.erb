@@ -1,0 +1,4 @@
+<% if @exam %>
+  $("tbody").html("")
+  $("tbody").append("<%= escape_javascript(render partial: 'reports/exam_user', collection: @exam_users, as: :exam_user) %>")
+<% end %>

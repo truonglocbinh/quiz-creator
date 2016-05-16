@@ -31,6 +31,11 @@
             <span class="pull-right badge bg-red"><%= group.exam_users.size %></span>
           <% end %>
         </li>
+        <li>
+          <%= link_to report_path(group_id: @group.id) do %>
+            Report
+          <% end %>
+        </li>
       </ul>
     </div>
   </div>

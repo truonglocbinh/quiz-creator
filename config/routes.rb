@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   post "assign", to: "assign_exam#assign", as: :assign
   get "show_class", to: "my_class#show_one_class", as: :show_class
   get "exam/start_exam", to: "my_class#main", as: :start_exam
+  get "reports", to: "reports#show", as: :report
+  post "get_report", to: "reports#get_report", as: :get_report
   resources :users, :notifications
   resources :groups do
     resources :user_groups
@@ -22,7 +24,8 @@ Rails.application.routes.draw do
     resources :exam_users
   end
   
-  namespace :user do 
+  namespace :user do
+    get "results", to: "results#results", as: :results
     resources :exam_users
   end 
 

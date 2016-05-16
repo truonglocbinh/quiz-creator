@@ -8,8 +8,6 @@
         <tr class="table-title">
           <td><%= t "exams.index.title" %></td>
           <td><%= t "exams.index.preview" %></td>
-          <td><%= t "exams.index.share" %></td>
-          <td><%= t "exams.index.report" %></td>
           <td><%= t "exams.index.last_modified" %></td>
         </tr>
         <tr>
@@ -17,8 +15,6 @@
           <input type="text" class="form-control" placeholder="Title"
             id="filter-exam-title">
           </td>
-          <td></td>
-          <td></td>
           <td></td>
           <td></td>
         </tr>
@@ -32,8 +28,6 @@
                 <i class="fa fa-eye fa-fw"></i>
               <% end %>
             </td>
-            <td><span class="glyphicon glyphicon glyphicon-globe style-span" aria-hidden="true"></span></td>
-            <td><span class="glyphicon glyphicon-align-justify style-span" aria-hidden="true"></span></td>
             <td><%= exam.created_at.strftime "%H:%M:%S %d-%m-%Y" %></td>
           </tr>
         <% end %>

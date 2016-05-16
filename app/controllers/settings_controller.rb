@@ -23,6 +23,6 @@ class SettingsController < ApplicationController
 
   def setting_params
     params.require(:setting).permit :score, :time_limit,
-      :order_question, :order_answer, :send_email
+      :order_question, :order_answer, :send_email, :pass
   end
 end

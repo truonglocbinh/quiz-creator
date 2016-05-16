@@ -1,8 +1,11 @@
 class User::ExamUsersController < ApplicationController
   before_action :authenticate_user!
   before_action :load_exam_user, only: [:show, :update]
-
+  before_action :authenticate_student
   def show
+    @notice = Notification.new from: current_user.id, 
+      to: @exam_user.exam.user.id, 
+      content: "#{current_user.name} has been start #{@exam_user.exam.title}"
     @duration = @exam_user.exam.setting.time_limit
     if @exam_user.time_start == nil
       @time_start = Time.now
@@ -44,5 +47,12 @@ class User::ExamUsersController < ApplicationController
   def exam_user_params
     params.require(:exam_user).permit  :user_id, :exam_id, :group_id,
       :status, :start_date, :end_date, results_attributes: [:id, :answer_id, answer_id: []]
+  end
+
+  def authenticate_student
+    if @exam_user.user != current_user
+      flash[:danger] = "Sorry you can not take this exam !"
+      redirect_to root_url
+    end
   end
 end

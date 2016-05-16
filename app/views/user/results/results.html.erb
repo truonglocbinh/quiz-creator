@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-8"><h3><%= @exam_user.exam.title %></h3></div>
+  <div class="col-md-3"><h3><%= @exam_user.exam.user.email %></h3></div>
+</div>
+<hr>
+<% if @exam_user.exam.description? %>
+  <h4><%= @exam_user.exam.description %></h4>
+  <hr>
+<% end %>
+<% if @exam_user.finished? %>
+  <h4><strong>Status: </strong><span class="label label-danger">Finished</span></h4>
+  <h4><strong>Student : </strong><%= @exam_user.user.name %></h4>
+  <h4><strong>Start at :</strong> <%= @exam_user.time_start.strftime "%H:%M:%S /%d-%m-%Y" %></h4>
+  <h4><strong>End at : </strong><%= @exam_user.time_end.strftime "%H:%M:%S /%d-%m-%Y" %></h4>
+  <h4><strong>Time : </strong><%= convert_time @exam_user, @duration %></h4>
+  <p>
+    <button class="btn">Nochoice <span class="badge"><%= @exam_user.results.no_choice.size %></span></button>
+    <button class="btn btn-danger" type="button">
+      Wrong <span class="badge">
+      <%= @exam_user.exam.questions.size - @exam_user.score[0] - 
+        @exam_user.results.no_choice.size %></span>
+    </button>
+     <button class="btn btn-primary" type="button">
+      Correct <span class="badge"><%= @exam_user.score[0] %></span>
+    </button>
+  </p>
+<% end %>
+<div class="row show-question" style="margin-top: 20px;">
+  <div class="col-md-10">
+    <% if @questions.size < 1 %>
+      <span class="label label-danger"><%= t "message.no_question" %></span>
+    <% else %>
+      <ol>
+        <%= render partial: "question", collection: @questions, as: :question %>
+      </ol>
+    <% end %>
+  </div>
+</div>

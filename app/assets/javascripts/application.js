@@ -26,6 +26,13 @@ $(document).on("page:change", function(){
   $(".alert").delay(2000).slideUp(500, function(){
         $(".alert").alert("close");
   });
+  var docHeight = $(window).height();
+   var footerHeight = $('.footer').height();
+   var footerTop = $('.footer').position().top + footerHeight;
+
+   if (footerTop < docHeight) {
+    $('.footer').css('margin-top', 10+ (docHeight - footerTop) + 'px');
+   }
   $(function() {
     $('.datetimepicker').datetimepicker({format: 'YYYY-M-D, HH:mm'});
   });
@@ -196,3 +203,14 @@ $(document).bind('page:change', function() {
     CKEDITOR.replace($(this).attr('id'));
   });
 });
+
+ $(document).ready(function() {
+
+   var docHeight = $(window).height();
+   var footerHeight = $('.footer').height();
+   var footerTop = $('.footer').position().top + footerHeight;
+
+   if (footerTop < docHeight) {
+    $('.footer').css('margin-top', 10+ (docHeight - footerTop) + 'px');
+   }
+  });

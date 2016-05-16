@@ -1,6 +1,6 @@
 class ExamsController < ApplicationController
   before_action :authenticate_user!
-  before_action :authenticate_onwer, except: [:index, :new]
+  before_action :authenticate_onwer, except: [:index, :new, :create]
   before_action :load_exam, except: [:index, :create, :new]
   add_breadcrumb "My Exams", :exams_path
   def index

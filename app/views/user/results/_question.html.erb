@@ -1,23 +1,21 @@
-<% alphabet = ("A".."Z").to_a.take f.object.question.answers.size %>
+<% alphabet = ("A".."Z").to_a.take question.answers.size %>
 <% i = 0  %>
-<% answers = f.object.exam_user.exam.setting.order_answer ? f.object.question.answers.shuffle : f.object.question.answers %>
 <div class="col-md-12">
   <div class="panel panel-green">
-    <div class="panel-heading"><li><strong><%= f.object.question.title.html_safe %></strong></li></div>
+    <div class="panel-heading"><li><strong><%= question.title.html_safe %></strong></li></div>
       <div class="panel-body">
         <div class="image-answer">
-          <% unless f.object.question.avatar_file_name.nil? %>
-            <%= image_tag f.object.question.avatar.url, class: "image-exam" %>
+          <% unless question.avatar_file_name.nil? %>
+            <%= image_tag question.avatar.url, class: "image-exam" %>
           <% end %>
         </div>
      <div class="answer-body">
-        <% if f.object.question.single_choice? %>
-          <% answers.each do |ans| %>
+        <% if question.single_choice? %>
+          <% question.answers.each do |ans| %>
             <div class="radio" style="border-bottom:1px solid #ddd; padding: 5px;">
               <%= alphabet[i] %>.
               <% i= i + 1 %>
-              <%= f.radio_button :answer_id, ans.id, {multiple: true,
-                disabled: !f.object.exam_user.starting?} %> 
+              <input type="radio" disabled <%= is_checked? ans.id, @exam_user %>/>
               <label class="label-answer"><%= ans.content.html_safe %></label>
               <div class="image-answer">
                 <% unless ans.avatar_file_name.nil? %>
@@ -26,12 +24,12 @@
               </div>
             </div>
           <% end %>
-        <% else f.object.question.multiple_choice? %>
-          <% answers.each do |ans| %>
+        <% else question.multiple_choice? %>
+          <% question.answers.each do |ans| %>
             <div class="checkbox checkbox-primary" style="border-bottom:1px solid #ddd">
               <%= alphabet[i] %>.
               <% i = i + 1 %>
-              <%= f.check_box :answer_id, {multiple: true, disabled: !f.object.exam_user.starting?}, ans.id, nil %>
+              <input type="checkbox" disabled <%= is_checked? ans.id, @exam_user %>/>
               <label class="label-answer"><%= ans.content.html_safe %></label>
               <div class="image-answer">
                 <% unless ans.avatar_file_name.nil? %>
@@ -41,6 +39,22 @@
             </div>
           <% end %>
         <% end %>
+    </div>
+    <div class="result">
+      <% if @exam_user.finished? %>
+        <% if correct? question, @exam_user %>
+          <span class="label label-primary">Correct</span>
+        <% elsif no_choice question, @exam_user %>
+          <span class="label label-info">No choice</span>
+        <% else %>
+          <span class="label label-danger">Wrong</span>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="feedback">
+      <% if question.feedback? %>
+        <%= question.feedback %>
+      <% end %>
     </div>
    </div>
   </div>

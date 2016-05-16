@@ -9,18 +9,18 @@
       <div class="panel-heading">
         <div class="row">
           <div class="col-xs-3">
-            <i class="fa fa-comments fa-5x"></i>
+            <i class="fa fa-file-text fa-5x"></i>
           </div>
           <div class="col-xs-9 text-right">
             <div class="huge">
-              26
+              <%= current_user.exams.size %>
             </div>
             <div>
               Exams
             </div>
           </div>
         </div>
-      </div><a href="#">
+      </div><a href="/exams">
       <div class="panel-footer">
         <span class="pull-left">View Details</span> <span class=
         "pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -37,14 +37,14 @@
           </div>
           <div class="col-xs-9 text-right">
             <div class="huge">
-              12
+              <%= current_user.groups.size %>
             </div>
             <div>
               My Groups
             </div>
           </div>
         </div>
-      </div><a href="#">
+      </div><a href="/groups">
       <div class="panel-footer">
         <span class="pull-left">View Details</span> <span class=
         "pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -57,18 +57,18 @@
       <div class="panel-heading">
         <div class="row">
           <div class="col-xs-3">
-            <i class="fa fa-shopping-cart fa-5x"></i>
+            <i class="fa fa-comments fa-5x"></i>
           </div>
           <div class="col-xs-9 text-right">
             <div class="huge">
-              124
+              <%= current_user.notifications.size %>
             </div>
             <div>
-              New Notification
+              Notification
             </div>
           </div>
         </div>
-      </div><a href="#">
+      </div><a href="/notifications">
       <div class="panel-footer">
         <span class="pull-left">View Details</span> <span class=
         "pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -81,18 +81,18 @@
       <div class="panel-heading">
         <div class="row">
           <div class="col-xs-3">
-            <i class="fa fa-support fa-5x"></i>
+            <i class="fa fa-graduation-cap fa-5x"></i>
           </div>
           <div class="col-xs-9 text-right">
             <div class="huge">
-              13
+              <%= current_user.joined_groups.size %>
             </div>
             <div>
-              Subjects
+              Classes
             </div>
           </div>
         </div>
-      </div><a href="#">
+      </div><a href="/all_class">
       <div class="panel-footer">
         <span class="pull-left">View Details</span> <span class=
         "pull-right"><i class="fa fa-arrow-circle-right"></i></span>
